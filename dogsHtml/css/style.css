@@ -1,0 +1,418 @@
+:root {
+  --bg-left:  #faf0e5;
+  --bg-main:  #f9f9f9;
+  --bg-right: #fff;
+  --primary:  #5a3e2b;
+  --accent:   #d8a48f;
+  --text:     #4a3b31;
+  --white:    #fff;
+  --muted:    #888;
+}
+
+/* Reset & Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f2f2f2;
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* 전역 img 스타일 */
+img {
+  max-width: 100%;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* 상단 헤더 */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3rem;
+  background: var(--primary);
+  color: var(--white);
+  display: flex; align-items: center;
+  padding: 0 1rem; z-index: 10;
+}
+.btn-back {
+  background: none; border: none;
+  color: var(--white); font-size: 1.2rem;
+  margin-right: 1rem; cursor: pointer;
+}
+.site-logo {
+  font-size: 1.2rem; font-weight: bold;
+}
+
+/* 3단 레이아웃 */
+.wrapper {
+  display: flex;
+  height: calc(100% - 3rem);
+  margin-top: 3rem;
+  overflow: hidden;
+}
+
+/* 1) 왼쪽 패널 */
+.left-panel {
+  flex: 5;
+  background: var(--bg-left);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 세로 중앙 */
+  align-items: center;     /* 가로 중앙 */
+  gap: 1rem;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+}
+.illustration img {
+  width: clamp(50px, 30vw, 300px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.tagline {
+  text-align: center;
+}
+.logo-text {
+  font-size: 1.5rem; font-weight: bold;
+  color: var(--primary);
+}
+
+/* ← 여기를 수정했습니다! */
+.search-form {
+  width: 50%;
+  max-width: 500px;
+  min-width: 200px;
+  display: flex;
+  margin: 0 auto;      /* ← 좌우 자동 여백으로 수평 중앙정렬 */
+}
+/* 위 폭이 너무 작아질 때를 대비해 min-width 지정 */
+.search-form input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 30px 0 0 30px;
+}
+.search-button {
+  width: 3rem;
+  background: var(--accent);
+  border: none;
+  color: var(--white);
+  font-size: 1.2rem;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+}
+
+/* 2) 가운데 패널 */
+.main-panel {
+  flex: 3;
+  background: var(--bg-main);
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.main-scroll {
+  flex: 1; overflow-y: auto;
+  padding: 1rem;
+  margin-bottom: 3.5rem;
+
+  /* ↓ 스크롤바 숨김 설정 ↓ */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE 10+ */
+}
+.main-scroll::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Opera */
+}
+
+/* Category Nav */
+.category-nav {
+  display: flex; gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.btn-category {
+  flex: 1; padding: 0.5rem;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  background: var(--bg-left);
+  color: var(--primary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-category:hover,
+.btn-category.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* 인기 상품 */
+.popular h2 {
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+.popular .sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.popular-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto;                
+  gap: 0.5rem;                     
+  padding-bottom: 0.5rem;          
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;           
+  -ms-overflow-style: none;        
+}
+.popular-list::-webkit-scrollbar {
+  display: none;                   
+}
+.popular-list .card {
+  flex: 0 0 auto;                  
+  width: clamp(120px, 30%, 200px);
+}
+.popular-list img {
+  display: block;
+}
+.popular-list .info {
+  padding: 0.5rem;
+}
+.popular-list .name {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+.popular-list,
+.product-list,
+.family-list {
+  cursor: grab;
+}
+.popular-list:active,
+.product-list:active,
+.family-list {
+  cursor: grabbing;
+}
+.popular-list,
+.product-list,
+.shoppingmal-list,
+.family-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 상품 그리드 */
+.product h2 {
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+.product .sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.product-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto;                
+  gap: 0.5rem;                     
+  padding-bottom: 0.5rem;          
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;           
+  -ms-overflow-style: none;        
+}
+.product-list::-webkit-scrollbar {
+  display: none;                   
+}
+.product-list .card {
+  flex: 0 0 auto;                  
+  width: clamp(120px, 40%, 200px);
+}
+.product-list img {
+  display: block;
+}
+
+.product-list .name {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+/* 쇼핑몰  */
+.shoppingmal h2 {
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+.shoppingmal .sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.shoppingmal-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;  
+  justify-content: center;    /* 가로 중앙정렬 */
+  align-items: center;        /* 세로 중앙정렬 */
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  overflow: visible !important; /* 스크롤 제거 */
+        
+}
+
+/* 1) 카드 자체를 flex 컨테이너로 */
+.shoppingmal-list .card {
+  flex: 0 0 auto;
+  /* 정사각형 비율: width 만큼 height 지정 */
+  width: clamp(50px, 40%, 100px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;    /* 세로 중앙정렬 */
+  justify-content: center;/* 가로 중앙정렬 */
+
+}
+
+/* 2) 이미지 크기는 카드 안에 최대 80% 정도 */
+.shoppingmal-list .card img {
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: contain;
+}
+
+.family h2 {
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+.family .sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.family-list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto;                
+  gap: 0.5rem;                     
+  padding-bottom: 0.5rem;          
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;           
+  -ms-overflow-style: none;        
+}
+.family-list::-webkit-scrollbar {
+  display: none;                   
+}
+.family-list .card {
+  flex: 0 0 auto;                  
+  width: clamp(120px, 40%, 200px);
+}
+.family-list img {
+  display: block;
+}
+
+.family-list .name {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+
+
+/* 하단 내비 */
+.bottom-nav {
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; display: flex;
+  background: var(--white);
+  border-top: 1px solid #e0e0e0;
+  padding: 0.5rem 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+  z-index: 5;
+}
+.nav-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-btn span {
+  margin-top: 0.2rem;
+}
+.nav-btn:hover,
+.nav-btn:focus {
+  color: var(--primary);
+}
+
+/* 3) 오른쪽 패널 */
+.right-panel {
+  flex: 2;
+  background: var(--bg-right);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* 반응형 (≤768px) */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+  }
+  .wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+  .left-panel,
+  .main-panel {
+    flex: none;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .main-scroll {
+    display: block;
+    overflow: visible;
+    margin: 0;
+    padding: 1rem;
+  }
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+  }
+  .main-panel {
+    padding-bottom: 0;
+  }
+  .right-panel {
+    display: none;
+  }
+
+  /* 모바일에서 검색폼 폭 80% */
+  .search-form {
+    width: 80%;
+    margin: 1rem auto 0;
+  }
+  .shoppingmal-list .card {
+    /* 모바일에서는 화면 너비 대비 조금 더 크게 */
+    width: clamp(60px, 25vw, 80px);
+    /* 나머지 중앙정렬 속성은 기본에서 이미 적용됨 */
+  }
+  .shoppingmal-list .card img {
+    max-width: 70%;
+    max-height: 70%;
+  }
+}
