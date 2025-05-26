@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hongsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* style.css 내용 */
+    :root {
+      /* 기본 색상 팔레트 */
+      --primary:  #5a3e2b; /* 진한 갈색 (메인 브랜드 색상) */
+      --accent:   #d8a48f; /* 밝은 갈색/주황색 (강조 색상) */
+      --text:     #4a3b31; /* 텍스트 색상 */
+      --white:    #fff;    /* 흰색 */
+      --muted:    #888;    /* 회색 (비활성/보조 텍스트) */
+
+      /* 배경 색상 */
+      --bg-light: #fefdfb; /* 매우 밝은 배경 (거의 흰색) */
+      --bg-medium: #f9f9f9; /* 중간 밝기 배경 (메인 콘텐츠 영역) */
+      --bg-dark:  #faf0e5; /* 왼쪽 패널 배경 (따뜻한 톤) */
+
+      /* 그림자 효과 - 더 부드럽게 조정 */
+      --shadow-subtle: 0 1px 3px rgba(0,0,0,0.04); /* 매우 미묘한 그림자 */
+      --shadow-light: 0 2px 6px rgba(0,0,0,0.06); /* 가벼운 그림자 */
+      --shadow-hover: 0 4px 12px rgba(0,0,0,0.1); /* 호버 시 그림자 */
+    }
+
+    /* Reset & Global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-size: 16px; /* 기본 폰트 크기 설정 */
+    }
+    body {
+      font-family: 'Noto Sans KR', sans-serif; /* 폰트 로딩 후 적용 */
+      background: #f2f2f2; /* 전체 배경색 */
+      color: var(--text);
+      overflow: hidden; /* 전체 스크롤 방지 */
+    }
+
+    /* 전역 img 스타일 */
+    img {
+      max-width: 100%;
+      height: auto; /* 이미지 비율 유지 */
+      display: block;
+      border: 0;
+      -ms-interpolation-mode: bicubic;
+      vertical-align: middle;
+    }
+
+    /* 상단 헤더 */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3rem;
+      background: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 헤더 그림자 */
+      justify-content: space-between; /* 로고와 아이콘 그룹을 양 끝으로 분산 */
+    }
+
+    .site-logo {
+      font-size: 1.2rem; /* 폰트 크기 조정 */
+      font-weight: bold;
+      text-align: left;
+      margin-right: auto; /* 아이콘 그룹을 오른쪽으로 밀어냄 */
+      letter-spacing: normal;
+      text-shadow: none;
+    }
+
+    /* 헤더 아이콘 그룹 */
+    .header-icons-group {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem; /* 아이콘들 간 간격 */
+    }
+
+    .header-icon-btn {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.2rem; /* 아이콘 크기 */
+      padding: 0.3rem; /* 아이콘 주변 패딩 */
+      border-radius: 50%; /* 둥근 모양 */
+      transition: all 0.2s ease-in-out;
+      display: flex; /* 아이콘 중앙 정렬을 위해 */
+      justify-content: center;
+      align-items: center;
+      width: 2rem; /* 고정 너비 */
+      height: 2rem; /* 고정 높이 */
+    }
+
+    .header-icon-btn:hover {
+      background-color: rgba(255, 255, 255, 0.2); /* 호버 시 미묘한 배경색 */
+      transform: translateY(-1px);
+    }
+
+    .header-login-link {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--white);
+      border-radius: 15px;
+      transition: background 0.2s, color 0.2s;
+      background-color: transparent;
+      font-weight: normal;
+      margin-left: 0.5rem; /* 로그인 링크와 아이콘 그룹 분리 */
+    }
+    .header-login-link:hover {
+      background: var(--white);
+      color: var(--primary);
+      transform: none;
+      box-shadow: none;
+    }
+
+
+    /* 3단 레이아웃 Wrapper */
+    .wrapper {
+      display: flex;
+      height: calc(100% - 3rem); /* 헤더 높이만큼 제외 */
+      margin-top: 3rem; /* 헤더 아래에서 시작 */
+      overflow: hidden; /* 전체 스크롤 방지 */
+    }
+
+    /* 1) 왼쪽 패널 */
+    .left-panel {
+      flex: 5;
+      background: var(--bg-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem; /* 간격 조정 */
+      padding: 2rem 1rem; /* 패딩 조정 */
+      overflow-y: auto;
+    }
+    .illustration img {
+      width: clamp(50px, 30vw, 300px); /* 이미지 크기 조정 */
+      border-radius: 0; /* 둥근 사각형 */
+      box-shadow: none; /* 이미지 그림자 */
+    }
+    .tagline {
+      text-align: center;
+      line-height: normal;
+    }
+    .tagline p {
+        font-size: 1rem;
+        color: var(--text);
+        font-weight: normal;
+        margin-bottom: 0;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-shadow: none;
+    }
+
+    .search-form {
+      width: 50%; /* 검색 폼 너비 증가 */
+      max-width: 500px;
+      min-width: 200px;
+      display: flex;
+      margin-top: 0;
+      box-shadow: none; /* 검색 폼 그림자 */
+      border-radius: 30px; /* 둥근 모서리 조정 */
+      overflow: visible; /* input과 button의 둥근 모서리 유지 */
+    }
+    .search-form input {
+      flex: 1;
+      padding: 0.6rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 30px 0 0 30px;
+      outline: none;
+      font-size: 1rem;
+      background-color: var(--white);
+    }
+    .search-button {
+      width: 3rem;
+      background: var(--accent);
+      border: none;
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 0 30px 30px 0;
+      transition: background 0.2s;
+    }
+    .search-button:hover {
+      opacity: 0.9;
+      transform: none;
+    }
+
+
+    /* 2) 가운데 메인 패널 */
+    .main-panel {
+      flex: 3;
+      background: var(--bg-main);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .main-scroll {
+      flex: 1; overflow-y: auto;
+      padding: 1rem; /* 패딩 조정 */
+      padding-bottom: 4.5rem; /* 하단 내비게이션 공간 확보 */
+
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .main-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Category Navigation */
+    .category-nav {
+      display: flex;
+      flex-wrap: nowrap; /* 줄바꿈 제거 */
+      gap: 0.5rem; /* 간격 조정 */
+      margin-bottom: 1rem;
+      padding: 0.5rem 0; /* 패딩 조정 */
+      background: none; /* 배경색 제거 */
+      border-radius: 0; /* 둥근 모서리 제거 */
+      box-shadow: none; /* 그림자 제거 */
+    }
+    .btn-category {
+      flex: 1; /* 유연하게 크기 조절 */
+      min-width: auto; /* 최소 너비 제거 */
+      padding: 0.7rem 1.2rem; /* 패딩 조정 */
+      border: none; /* 테두리 제거 */
+      border-radius: 9999px; /* 둥근 모양 강조 */
+      color: var(--primary);
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; /* 애니메이션 추가 */
+      white-space: nowrap;
+      box-shadow: var(--shadow-subtle); /* 미묘한 그림자 추가 */
+      font-weight: 500; /* 폰트 굵기 조정 */
+      font-size: 0.9rem; /* 폰트 크기 조정 */
+    }
+    /* 각 버튼에 개별 색상 적용 */
+    .btn-category[data-route="/dang-jarang"] {
+      background: #ffe0b2; /* 밝은 오렌지 계열 */
+    }
+    .btn-category[data-route="/dang-with"] {
+      background: #ffccbc; /* 더 부드러운 오렌지 계열 */
+    }
+    .btn-category[data-route="/dang-store"] {
+      background: #c8e6c9; /* 밝은 녹색 계열 */
+    }
+    .btn-category[data-route="/dang-adopt"] {
+      background: #bbdefb; /* 밝은 파란색 계열 */
+    }
+
+    .btn-category:hover,
+    .btn-category.active {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: var(--shadow-light); /* 호버 시 그림자 강조 */
+      transform: translateY(-1px); /* 호버 시 살짝 위로 */
+    }
+
+    /* 공통 카드 스타일 */
+    .card {
+      background: var(--white);
+      border-radius: 8px; /* 둥근 모서리 조정 */
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 카드 그림자 조정 */
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: none; /* 호버 시 살짝 위로 */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 호버 시 그림자 강조 */
+    }
+
+    /* 리스트 공통 스타일 (가로 스크롤) */
+    .popular-list,
+    .product-list,
+    .shoppingmal-list,
+    .family-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+    }
+    .popular-list::-webkit-scrollbar,
+    .product-list::-webkit-scrollbar,
+    .shoppingmal-list::-webkit-scrollbar,
+    .family-list::-webkit-scrollbar {
+      display: none;
+    }
+    .popular-list:active,
+    .product-list:active,
+    .shoppingmal-list:active,
+    .family-list:active {
+      cursor: grabbing;
+    }
+
+
+    /* 섹션 공통 스타일 */
+    .popular,
+    .product,
+    .shoppingmal,
+    .family {
+      background: var(--bg-main); /* 섹션 배경색 */
+      border-radius: 0; /* 섹션 둥근 모서리 제거 */
+      padding: 1rem; /* 내부 패딩 조정 */
+      margin-bottom: 1rem; /* 하단 여백 조정 */
+      box-shadow: none; /* 섹션 그림자 제거 */
+    }
+
+    /* 섹션 헤딩 및 서브 텍스트 */
+    .popular h2,
+    .product h2,
+    .shoppingmal h2,
+    .family h2 {
+      margin-bottom: 0.3rem;
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--text);
+      text-shadow: none;
+    }
+    .popular .sub,
+    .product .sub,
+    .shoppingmal .sub,
+    .family .sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .popular-list .card {
+      flex: 0 0 auto;
+      width: clamp(120px, 30%, 200px);
+    }
+    .popular-list img {
+      height: auto;
+      object-fit: cover;
+      border-radius: 0;
+    }
+    .popular-list .info {
+      padding: 0.5rem;
+    }
+    .popular-list .name {
+      font-size: 0.9rem;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    /* 상품 그리드 */
+    .product-list .card {
+      flex: 0 0 auto;
+      width: clamp(120px, 40%, 200px);
+    }
+    .product-list img {
+      height: auto;
+      object-fit: cover;
+      border-radius: 0;
+    }
+    .product-list .name {
+      font-size: 0.9rem;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    /* 쇼핑몰 */
+    .shoppingmal-list .card {
+      flex: 0 0 auto;
+      width: clamp(120px, 30%, 180px);
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .shoppingmal-list .card img {
+      height: auto;
+      object-fit: contain;
+      border-radius: 0;
+      margin-bottom: 0.5rem;
+    }
+    .shoppingmal-list .card .name {
+      font-size: 0.9rem;
+      font-weight: normal;
+    }
+
+
+    /* 가족이 되어주세요 (Family) */
+    .family-list .card {
+      flex: 0 0 auto;
+      width: clamp(120px, 30%, 150px);
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .family-list .card img {
+        height: auto;
+        object-fit: cover;
+        border-radius: 0;
+        margin-bottom: 0.5rem;
+    }
+    .family-list .card a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: normal;
+      display: block;
+      transition: color 0.2s ease;
+    }
+    .family-list .card a:hover {
+      color: var(--accent);
+    }
+
+
+    /* 하단 내비게이션 */
+    .bottom-nav {
+      position: absolute; bottom: 0; left: 0;
+      width: 100%; display: flex;
+      background: var(--white);
+      border-top: 1px solid #e0e0e0;
+      padding: 0.5rem 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+      z-index: 5;
+      height: 3.5rem;
+      border-bottom-right-radius: 0;
+    }
+    .nav-btn {
+      flex: 1;
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .nav-btn span {
+      margin-top: 0.2rem;
+      font-weight: normal;
+    }
+    .nav-btn:hover,
+    .nav-btn:focus,
+    .nav-btn.active {
+      color: var(--primary);
+      transform: none;
+    }
+
+
+    /* 3) 오른쪽 패널 */
+    .right-panel {
+      flex: 2;
+      background: var(--bg-right);
+      padding: 1rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      box-shadow: none;
+    }
+    .right-panel h2 {
+        font-size: 1.5rem;
+        color: var(--primary);
+        text-shadow: none;
+    }
+    .right-panel p {
+        font-size: 1rem;
+        color: var(--text);
+        line-height: normal;
+    }
+
+
+    /* New styles for Gemini API integration */
+    .brag-generator-container {
+      background: var(--bg-medium); /* 메인 패널 배경색과 다르게 */
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-subtle);
+      text-align: center; /* 중앙 정렬 */
+    }
+
+    .brag-generator-container h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    #dog-brag-input {
+      width: calc(100% - 20px); /* 패딩 고려 */
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.9rem;
+      resize: vertical; /* 세로 크기 조절 가능 */
+    }
+
+    .generate-btn {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 20px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: var(--shadow-subtle);
+      display: inline-block; /* 중앙 정렬을 위해 */
+    }
+
+    .generate-btn:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-light-hover);
+    }
+
+    #brag-output-container {
+      margin-top: 1.5rem;
+      background: var(--bg-light);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 8px;
+      padding: 1rem;
+      min-height: 50px; /* 최소 높이 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left; /* 텍스트는 왼쪽 정렬 */
+      position: relative; /* 로딩 스피너 위치를 위해 */
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .generated-text {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.5;
+      white-space: pre-wrap; /* 줄바꿈 유지 */
+    }
+
+    /* Loading Spinner */
+    .loading-spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: auto; /* 중앙 정렬 */
+    }
+
+    .loading-spinner.hidden {
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
+    /* 반응형 (≤768px) */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 3.5rem; /* 헤더 높이만큼 패딩 */
+        padding-bottom: 0;
+        align-items: flex-start;
+        background: #f2f2f2; /* 모바일에서는 단색 배경 */
+      }
+      .wrapper {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .left-panel,
+      .main-panel {
+        flex: none;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 1rem; /* 모바일 패딩 조정 */
+      }
+      .main-scroll {
+        display: block;
+        overflow: visible;
+        margin: 0;
+        padding: 1rem;
+        padding-bottom: 5rem;
+      }
+      .bottom-nav {
+        position: fixed;
+        bottom: 0; left: 0;
+        width: 100%;
+        border-radius: 0;
+      }
+      .main-panel {
+        padding-bottom: 0;
+      }
+      .right-panel {
+        display: none;
+      }
+
+      /* 모바일에서 검색폼 폭 90% */
+      .search-form {
+        width: 90%;
+        margin: 1rem auto;
+      }
+      /* 모바일에서 헤더 로그인 링크 숨김 */
+      .header-login-link {
+        display: none;
+      }
+      /* 모바일에서 로고 중앙 정렬 재설정 */
+      .site-header .site-logo {
+        margin-left: 0;
+      }
+      .site-header {
+        padding: 0 1rem;
+      }
+      .category-nav {
+        flex-wrap: wrap; /* 모바일에서 줄바꿈 허용 */
+        justify-content: center; /* 중앙 정렬 */
+        padding: 0.8rem;
+        gap: 0.6rem;
+      }
+      .btn-category {
+        flex: 1 1 45%;
+        max-width: 48%;
+        font-size: 0.85rem;
+        padding: 0.6rem 0.5rem;
+      }
+      .popular-list .card,
+      .product-list .card,
+      .shoppingmal-list .card,
+      .family-list .card {
+        width: clamp(150px, 45vw, 250px);
+      }
+      .popular h2, .product h2, .shoppingmal h2, .family h2 {
+        font-size: 1.3rem;
+      }
+      .popular .sub, .product .sub, .shoppingmal .sub, .family .sub {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="site-logo">Hongsi</h1>
+    <div class="header-icons-group">
+      <a href="#" class="header-icon-btn notification-btn" title="알림">🔔</a>
+      <a href="#" class="header-icon-btn post-btn" title="글쓰기">📝</a>
+      <a href="#" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
+      <a href="#" class="header-login-link">로그인/회원가입</a>
+    </div>
+  </header>
+
+  <div class="wrapper">
+
+    <section class="left-panel">
+      <div class="illustration">
+        <img src="https://placehold.co/300x300/faf0e5/5a3e2b?text=Hongsi+Dog" alt="따뜻한 세상을 만나는 홍시 강아지 일러스트" />
+      </div>
+      <div class="tagline">
+        <p>나의 작은 가족이<br/>따듯한 세상을 만나는 방법</p>
+        <span class="logo-text">Hongsi</span>
+      </div>
+      <form class="search-form">
+        <input type="text" placeholder="어떤 상품을 찾으시나요?" />
+        <button class="search-button">🔍</button>
+      </form>
+    </section>
+
+    <section class="main-panel">
+      <div class="main-scroll">
+        <nav class="category-nav">
+          <button class="btn-category" data-route="/dang-jarang">🐶 댕 자랑</button>
+          <button class="btn-category" data-route="/dang-with">🧡 댕과 함께</button>
+          <button class="btn-category" data-route="/dang-store">🛍️ 댕 스토어</button>
+          <button class="btn-category" data-route="/dang-adopt">🏠 가족이 되어주세요</button>
+        </nav>
+
+        <section class="popular">
+          <h2>🐶 우리집 댕 자랑</h2>
+          <p class="sub">우리집 강아지를 소개해보세요</p>
+
+          <ul class="popular-list">
+            <li class="card">
+              <img src="https://placehold.co/200x150/d8a48f/ffffff?text=Cute+Dog+1" alt="잔디밭에 앉아있는 흰색 귀여운 감자 강아지" />
+              <div class="info"><p class="name">귀여운 감자</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/d8a48f/ffffff?text=Cute+Dog+2" alt="벤치에 앉아있는 흰색 동글동글 귀여운 감자 강아지" />
+              <div class="info"><p class="name">사랑스러운 콩이</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/d8a48f/ffffff?text=Cute+Dog+3" alt="잔디밭에 앉아있는 흰색 귀여운 감자 강아지" />
+              <div class="info"><p class="name">활발한 보리</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/d8a48f/ffffff?text=Cute+Dog+4" alt="잔디밭에 앉아있는 흰색 귀여운 감자 강아지" />
+              <div class="info"><p class="name">장난꾸러기 별이</p></div>
+            </li>
+          </ul>
+
+          <div class="brag-generator-container">
+            <h3>✨ 자랑글 생성기</h3>
+            <textarea id="dog-brag-input" placeholder="우리 강아지의 특징을 입력해주세요. (예: 활발하고 공놀이를 좋아해요, 귀여운 외모에 애교가 많아요)" rows="3"></textarea>
+            <button id="generate-brag-btn" class="generate-btn">✨ 자랑글 생성</button>
+            <div id="brag-output-container">
+              <div id="brag-loading-spinner" class="loading-spinner hidden"></div>
+              <p id="brag-output-text" class="generated-text"></p>
+            </div>
+          </div>
+          </section>
+
+        <section class="product">
+          <h2>🧡 댕과 함께 카페&음식점</h2>
+          <p class="sub">댕이와 함께 놀러가기 좋은곳 </p>
+          <ul class="product-list">
+            <li class="card">
+              <img src="https://placehold.co/200x150/5a3e2b/ffffff?text=Pet+Cafe+1" alt="앙증맞은 흰색 강아지 크롭" />
+              <div class="info"><p class="name">크롭 카페</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/5a3e2b/ffffff?text=Pet+Cafe+2" alt="앙증맞은 흰색 강아지 크롭" />
+              <div class="info"><p class="name">댕댕이 키친</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/5a3e2b/ffffff?text=Pet+Cafe+3" alt="앙증맞은 흰색 강아지 크롭" />
+              <div class="info"><p class="name">멍멍 브런치</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/5a3e2b/ffffff?text=Pet+Cafe+4" alt="앙증맞은 흰색 강아지 크롭" />
+              <div class="info"><p class="name">펫 프렌들리</p></div>
+            </li>
+          </ul>
+        </section>
+        <section class="shoppingmal">
+          <h2>🛍️ 댕 스토어</h2>
+          <p class="sub">다양한 댕댕이 용품을 만나보세요!</p>
+            <ul class="shoppingmal-list">
+              <li class="card">
+                <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Toy" alt="강아지 장난감 이미지">
+                <div class="info"><p class="name">삑삑이 강아지 장난감</p></div>
+              </li>
+              <li class="card">
+                <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Food" alt="강아지 사료 이미지">
+                <div class="info"><p class="name">유기농 강아지 사료</p></div>
+              </li>
+              <li class="card">
+                <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Clothes" alt="강아지 옷 이미지">
+                <div class="info"><p class="name">귀여운 강아지 옷</p></div>
+              </li>
+              <li class="card">
+                <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Snack" alt="강아지 간식 이미지">
+                <div class="info"><p class="name">수제 강아지 간식</p></div>
+              </li>
+              <li class="card">
+                <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Bed" alt="강아지 침대 이미지">
+                <div class="info"><p class="name">푹신한 강아지 침대</p></div>
+              </li>
+            </ul>
+        </section>
+        <section class="family" >
+          <h2>👼🏻 가족이 되어주세요</h2>
+          <p class="sub">따뜻한 집으로</p>
+            <ul class="family-list">
+              <li class="card">
+                <img src="https://placehold.co/150x120/5a3e2b/ffffff?text=Shelter+Dog+1" alt="보호소 강아지 이미지">
+                <a href="https://dmmdc.co.kr" target="_blank">도그마루 보호소</a>
+              </li>
+              <li class="card">
+                <img src="https://placehold.co/150x120/5a3e2b/ffffff?text=Shelter+Dog+2" alt="보호소 강아지 이미지">
+                <a href="https://www.animal.or.kr/" target="_blank">동물자유연대</a>
+              </li>
+              <li class="card">
+                <img src="https://placehold.co/150x120/5a3e2b/ffffff?text=Shelter+Dog+3" alt="보호소 강아지 이미지">
+                <a href="https://www.ekara.org/" target="_blank">카라 동물보호시민단체</a>
+              </li>
+              <li class="card">
+                <img src="https://placehold.co/150x120/5a3e2b/ffffff?text=Shelter+Dog+4" alt="보호소 강아지 이미지">
+                <a href="https://www.koreaanimalrights.org/" target="_blank">한국동물보호협회</a>
+              </li>
+              <li class="card">
+                <img src="https://placehold.co/150x120/5a3e2b/ffffff?text=Shelter+Dog+5" alt="보호소 강아지 이미지">
+                <a href="https://www.animals.or.kr/" target="_blank">케어</a>
+              </li>
+            </ul>
+        </section>
+
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-route="/home">🏠<span>홈</span></button>
+        <button class="nav-btn" data-route="/category">🗂️<span>카테고리</span></button>
+        <button class="nav-btn" data-route="/life">😺<span>집사생활</span></button>
+        <button class="nav-btn" data-route="/search">🔍<span>검색</span></button>
+        <button class="nav-btn" data-route="/login">👤<span>로그인/가입</span></button>
+      </nav>
+    </section>
+
+    <aside class="right-panel">
+      <h2>Hongsi에 오신 것을 환영합니다!</h2>
+      <p>이곳은 당신의 작은 가족과 함께하는 따뜻한 세상을 위한 공간입니다.</p>
+      <p>오른쪽 패널은 데스크톱 환경에서 추가 정보를 표시하거나, 광고, 추천 콘텐츠 등을 보여줄 수 있습니다.</p>
+    </aside>
+
+  </div>
+
+  <script>
+    // script.js 내용
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1) 카테고리 active 토글 + data-route 라우팅
+      document.querySelectorAll('.btn-category').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.btn-category').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const route = btn.dataset.route;
+          // if (route) window.location.href = route; // 현재는 페이지 이동 주석 처리, 필요 시 활성화
+        });
+      });
+
+      // 2) 하단 내비게이션 클릭 시 active 토글 + 라우팅
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); // 모든 버튼에서 active 제거
+          btn.classList.add('active'); // 클릭된 버튼에 active 추가
+          const route = btn.dataset.route;
+          // if (route) window.location.href = route; // 현재는 페이지 이동 주석 처리, 필요 시 활성화
+
+          // 검색 버튼 클릭 시 메시지 표시
+          if (route === '/search') {
+            alert('검색 기능은 아직 구현되지 않았습니다.');
+          }
+        });
+      });
+
+      // 초기 로드 시 첫 번째 카테고리/하단 내비 버튼에 active 클래스 추가 (선택 사항)
+      // if (document.querySelector('.btn-category')) {
+      //   document.querySelector('.btn-category').classList.add('active');
+      // }
+      // if (document.querySelector('.nav-btn')) {
+      //   document.querySelector('.nav-btn').classList.add('active');
+      // }
+
+
+      // 3) .popular-list, .product-list, .shoppingmal-list, .family-list 클릭&드래그로 가로 스크롤
+      document.querySelectorAll('.popular-list, .product-list, .shoppingmal-list, .family-list').forEach(slider => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', e => {
+          isDown = true;
+          slider.classList.add('active'); // CSS에서 cursor: grabbing 적용 위함
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+          e.preventDefault(); // 이미지 드래그 방지
+        });
+
+        slider.addEventListener('mouseleave', () => {
+          isDown = false;
+          slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mouseup', () => {
+          isDown = false;
+          slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mousemove', e => {
+          if (!isDown) return;
+          const x = e.pageX - slider.offsetLeft;
+          const walk = (x - startX) * 1.5; // 드래그 속도 조절
+          slider.scrollLeft = scrollLeft - walk;
+        });
+      });
+
+      // Gemini API Integration: Bragging Post Generator Logic
+      const dogBragInput = document.getElementById('dog-brag-input');
+      const generateBragBtn = document.getElementById('generate-brag-btn');
+      const bragOutputContainer = document.getElementById('brag-output-container');
+      const bragOutputText = document.getElementById('brag-output-text');
+      const bragLoadingSpinner = document.getElementById('brag-loading-spinner');
+
+      generateBragBtn.addEventListener('click', async () => {
+        const prompt = dogBragInput.value.trim();
+
+        if (!prompt) {
+          // alert 대신 메시지 박스 또는 인라인 메시지 사용 권장
+          bragOutputText.textContent = '우리 강아지의 특징을 입력해주세요!';
+          bragOutputText.style.color = 'red';
+          return;
+        }
+
+        // Clear previous output and show loading spinner
+        bragOutputText.textContent = '';
+        bragOutputText.style.color = 'var(--text)'; // 색상 초기화
+        bragLoadingSpinner.classList.remove('hidden');
+        bragOutputContainer.style.minHeight = '100px'; // 로딩 중 높이 확보
+
+        try {
+          let chatHistory = [];
+          chatHistory.push({ role: "user", parts: [{ text: `우리 강아지의 특징은 다음과 같습니다: "${prompt}". 이 정보를 바탕으로 긍정적이고 매력적인 자랑글을 500자 이내로 작성해 주세요. 친근하고 따뜻한 어조로 작성해주세요.` }] });
+          const payload = { contents: chatHistory };
+          const apiKey = ""; // Canvas will automatically provide it in runtime
+          const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            throw new Error(`API error: ${response.status} ${response.statusText}`);
+          }
+
+          const result = await response.json();
+
+          if (result.candidates && result.candidates.length > 0 &&
+              result.candidates[0].content && result.candidates[0].content.parts &&
+              result.candidates[0].content.parts.length > 0) {
+            const text = result.candidates[0].content.parts[0].text;
+            bragOutputText.textContent = text;
+          } else {
+            bragOutputText.textContent = '자랑글을 생성하는 데 실패했습니다. 다시 시도해주세요.';
+            bragOutputText.style.color = 'red';
+            console.error('Unexpected API response structure:', result);
+          }
+        } catch (error) {
+          console.error('Error generating bragging post:', error);
+          bragOutputText.textContent = '자랑글을 생성하는 중 오류가 발생했습니다. 네트워크 연결을 확인하거나 잠시 후 다시 시도해주세요.';
+          bragOutputText.style.color = 'red';
+        } finally {
+          bragLoadingSpinner.classList.add('hidden');
+          bragOutputContainer.style.minHeight = '50px'; // 원래 높이로 복원
+        }
+      });
+    });
+  </script>
+</body>
+</html>
