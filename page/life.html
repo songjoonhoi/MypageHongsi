@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>집사생활 - Hongsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/life.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="btn-back" onclick="history.back()">&lt;</button>
+    <h1 class="site-logo">집사생활</h1>
+  </header>
+
+  <div class="wrapper single-page-wrapper">
+    <section class="main-panel expanded-panel">
+      <div class="main-scroll">
+        <div class="content-container">
+          <h2>집사생활 A to Z</h2>
+          <p class="sub">반려견과 더 행복한 삶을 위한 모든 것</p>
+
+          <section class="life-section mbti-section">
+            <h3>멍BTI: 우리 강아지 성격 테스트</h3>
+            <div class="life-content-preview">
+              <p>우리 강아지는 어떤 성격일까요? 간단한 테스트로 알아보고 맞춤형 소통법을 찾아보세요!</p>
+              <div class="mbti-visual-placeholder">
+                <span class="dog-icon">🐾</span>
+                <p>나와 찰떡궁합 댕댕이는?</p>
+              </div>
+              <button type="button" class="btn-life-action btn-start-mbti">테스트 시작하기 (준비중)</button>
+            </div>
+          </section>
+
+          <section class="life-section qna-section">
+            <h3>전문가의 Q&A</h3>
+            <div class="life-content-preview">
+              <p>반려생활 중 궁금한 점이나 어려운 점이 있다면 전문가에게 질문하고 답변을 받아보세요.</p>
+              <div class="qna-list-container">
+                <table class="qna-table">
+                  <thead>
+                    <tr>
+                      <th class="qna-num">번호</th>
+                      <th class="qna-title">제목</th>
+                      <th class="qna-author">작성자</th>
+                      <th class="qna-date">날짜</th>
+                      <th class="qna-views">조회</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>3</td>
+                      <td><a href="#" class="coming-soon-link">강아지가 밥을 잘 안 먹어요. 어떻게 해야 할까요? (샘플)</a></td>
+                      <td>씩씩한 집사</td>
+                      <td>2024.07.28</td>
+                      <td>102</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><a href="#" class="coming-soon-link">산책할 때 너무 흥분하는데 진정시키는 방법이 있을까요? (샘플)</a></td>
+                      <td>용감한 누나</td>
+                      <td>2024.07.27</td>
+                      <td>158</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td><a href="#" class="coming-soon-link">처음 강아지를 키우는데 필요한 준비물은 무엇인가요? (샘플)</a></td>
+                      <td>초보집사 홍시</td>
+                      <td>2024.07.25</td>
+                      <td>230</td>
+                    </tr>
+                    <!-- 더 많은 Q&A 아이템들 -->
+                  </tbody>
+                </table>
+                <div class="qna-list-empty" style="display:none;">
+                    <p>아직 등록된 질문이 없습니다. 첫 번째 질문을 남겨보세요!</p>
+                </div>
+              </div>
+              <div class="qna-actions">
+                <button type="button" class="btn-life-action btn-view-all-qna">모든 Q&A 보기 (준비중)</button>
+                <a href="../page/write-post.html?category=qna" class="btn-life-action btn-write-qna">질문하기</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="life-section tips-section">
+            <h3>슬기로운 집사생활 팁</h3>
+            <div class="life-grid">
+              <a href="#" class="life-card coming-soon">
+                <img src="https://placehold.co/300x200/d8a48f/ffffff?text=Tip+1&fontsize=16" alt="훈련 팁">
+                <h4>초보 집사도 성공! 기본 훈련법</h4>
+                <p class="card-subtext">앉아, 기다려, 이리와! 기초 훈련 마스터하기</p>
+              </a>
+              <a href="#" class="life-card coming-soon">
+                <img src="https://placehold.co/300x200/5a3e2b/ffffff?text=Tip+2&fontsize=16" alt="건강 팁">
+                <h4>강아지 건강 상식: 이것만은 알자!</h4>
+                <p class="card-subtext">예방접종부터 응급처치까지 필수 건강 정보</p>
+              </a>
+              <a href="#" class="life-card coming-soon">
+                <img src="https://placehold.co/300x200/ffccbc/ffffff?text=Tip+3&fontsize=16" alt="놀이 팁">
+                <h4>지루할 틈이 없어요! 실내 놀이 아이디어</h4>
+                <p class="card-subtext">집에서도 즐거운 시간을 보내는 다양한 놀이</p>
+              </a>
+            </div>
+            <a href="#" class="btn-life-action coming-soon">더 많은 팁 보기 (준비중)</a>
+          </section>
+
+          <section class="life-section community-section">
+            <h3>집사들의 수다방</h3>
+            <div class="life-content-preview">
+              <p>다른 집사님들의 이야기를 듣고, 여러분의 이야기도 공유해주세요!</p>
+              <a href="#" class="btn-life-action coming-soon">수다방 가기 (준비중)</a>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-route="../dogsHtml/index.html">🏠<span>홈</span></button>
+        <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
+        <button class="nav-btn active" data-route="../page/life.html">😺<span>집사생활</span></button>
+        <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
+        <button class="nav-btn" data-route="../page/login.html">👤<span>로그인</span></button>
+      </nav>
+    </section>
+  </div>
+
+  <script src="../js/life.js"></script>
+</body>
+</html> 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>마이페이지 - Hongsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/my-page.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="btn-back" onclick="history.back()">&lt;</button>
+    <h1 class="site-logo">마이페이지</h1>
+  </header>
+
+  <div class="wrapper single-page-wrapper">
+    <section class="main-panel expanded-panel">
+      <div class="main-scroll">
+        <div class="content-container my-page-container">
+          
+          <section class="profile-section">
+            <div class="profile-image-placeholder">👤</div>
+            <h2 class="nickname-placeholder">홍시_사용자님</h2>
+            <p class="bio-placeholder">한 줄 소개가 여기에 표시됩니다. (준비중)</p>
+            <button class="btn-edit-profile">프로필 수정 (준비중)</button>
+          </section>
+
+          <section class="activity-section">
+            <h3>나의 활동</h3>
+            <ul class="menu-list">
+              <li><a href="#">내가 쓴 글 (준비중)</a></li>
+              <li><a href="#">댓글 단 글 (준비중)</a></li>
+              <li><a href="#">좋아요 한 글 (준비중)</a></li>
+            </ul>
+          </section>
+
+          <section class="account-section">
+            <h3>계정 관리</h3>
+            <ul class="menu-list">
+              <li><a href="#">로그아웃 (준비중)</a></li>
+              <li><a href="#">회원정보 수정 (준비중)</a></li>
+              <li><a href="#">회원탈퇴 (준비중)</a></li>
+            </ul>
+          </section>
+          
+          <p class="preparation-notice">마이페이지의 모든 기능은 현재 준비중입니다. <br>곧 더 멋진 모습으로 찾아뵙겠습니다!</p>
+
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-route="../dogsHtml/index.html">🏠<span>홈</span></button>
+        <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
+        <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
+        <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
+        <button class="nav-btn" data-route="../page/my-page.html">👤<span>내 정보</span></button> 
+      </nav>
+    </section>
+  </div>
+
+  <script src="../js/my-page.js"></script>
+</body>
+</html> 

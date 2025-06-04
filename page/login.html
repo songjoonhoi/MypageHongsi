@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>로그인 / 회원가입 - Hongsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="btn-back" onclick="history.back()">&lt;</button>
+    <h1 class="site-logo">로그인 / 회원가입</h1>
+    <!-- 아이콘 그룹 및 기존 로그인 링크 제거 -->
+  </header>
+
+  <div class="wrapper single-page-wrapper">
+    <section class="main-panel expanded-panel">
+      <div class="main-scroll">
+        <div class="login-container">
+          <h2>환영합니다!</h2>
+          <p class="sub">로그인하고 모든 서비스를 이용해보세요.</p>
+
+          <form id="login-form" class="login-form" novalidate>
+            <div class="form-group">
+              <label for="email" class="sr-only">이메일 주소</label>
+              <input type="email" id="email" name="email" placeholder="이메일 주소" required>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="password" class="sr-only">비밀번호</label>
+              <input type="password" id="password" name="password" placeholder="비밀번호" required>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+            <button type="submit" class="btn-login">로그인</button>
+            <div class="form-options">
+              <a href="#" id="find-credentials" class="text-link coming-soon-link">아이디/비밀번호 찾기</a>
+              <a href="register.html" id="register" class="text-link">회원가입</a>
+            </div>
+          </form>
+
+          <div class="social-login">
+            <p class="social-login-text">간편 로그인</p>
+            <button class="social-btn kakao">
+              <!-- <img src="../assets/kakao_icon.png" alt="카카오 로그인"> --> 카카오로 로그인
+            </button>
+            <button class="social-btn google">
+              <!-- <img src="../assets/google_icon.png" alt="구글 로그인"> --> 구글로 로그인
+            </button>
+            <button class="social-btn naver">
+              <!-- <img src="../assets/naver_icon.png" alt="네이버 로그인"> --> 네이버로 로그인
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-route="../dogsHtml/index.html">🏠<span>홈</span></button>
+        <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
+        <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
+        <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
+        <button class="nav-btn active" data-route="../page/login.html">👤<span>로그인</span></button>
+      </nav>
+    </section>
+  </div>
+
+  <script src="../js/login.js"></script>
+</body>
+</html> 

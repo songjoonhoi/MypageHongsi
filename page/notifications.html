@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>알림 - Hongsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/notifications.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="btn-back" onclick="history.back()">&lt;</button>
+    <h1 class="site-logo">알림</h1>
+  </header>
+
+  <div class="wrapper single-page-wrapper">
+    <section class="main-panel expanded-panel">
+      <div class="main-scroll">
+        <div class="content-container notifications-container">
+          
+          <div class="no-notifications">
+            <p>🔔</p>
+            <p>새로운 알림이 없습니다.</p>
+          </div>
+
+          <!-- 알림 목록 예시 (실제 구현 시 동적으로 생성) -->
+          <ul class="notifications-list" style="display: none;"> 
+            <li class="notification-item new">
+              <a href="#">
+                <span class="notification-icon">💬</span>
+                <div class="notification-content">
+                  <p class="notification-text"><strong>댕댕월드마스터</strong>님이 회원님의 '우리집 댕댕이' 게시글에 댓글을 남겼습니다.</p>
+                  <span class="notification-time">방금 전</span>
+                </div>
+              </a>
+            </li>
+            <li class="notification-item">
+              <a href="#">
+                <span class="notification-icon">📢</span>
+                <div class="notification-content">
+                  <p class="notification-text">새로운 <strong>공지사항</strong>이 등록되었습니다: '사이트 점검 안내'</p>
+                  <span class="notification-time">1시간 전</span>
+                </div>
+              </a>
+            </li>
+            <li class="notification-item">
+              <a href="#">
+                <span class="notification-icon">❤️</span>
+                <div class="notification-content">
+                  <p class="notification-text"><strong>간식조아</strong>님이 회원님의 댓글을 좋아합니다.</p>
+                  <span class="notification-time">어제</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+          
+          <p class="preparation-notice">알림 기능은 현재 개발 중입니다. <br>중요한 소식을 놓치지 않도록 곧 준비하겠습니다!</p>
+
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-route="../dogsHtml/index.html">🏠<span>홈</span></button>
+        <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
+        <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
+        <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
+        <button class="nav-btn" data-route="../page/my-page.html">👤<span>내 정보</span></button> 
+      </nav>
+    </section>
+  </div>
+
+  <script src="../js/notifications.js"></script>
+</body>
+</html> 

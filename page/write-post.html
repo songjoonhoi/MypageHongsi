@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>새 글 작성 - Hongsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/write-post.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="btn-back" onclick="history.back()">&lt;</button>
+    <h1 class="site-logo">새 글 작성</h1>
+  </header>
+
+  <div class="wrapper single-page-wrapper">
+    <section class="main-panel expanded-panel">
+      <div class="main-scroll">
+        <div class="content-container write-post-container">
+          
+          <form id="writePostForm" novalidate>
+            <div class="form-group">
+              <label for="postCategory">게시판 선택</label>
+              <select id="postCategory" name="postCategory" required>
+                <option value="" disabled selected>카테고리를 선택하세요</option>
+                <option value="dang- 자랑">댕 자랑하기</option>
+                <option value="qna">전문가의 Q&A</option>
+                <option value="tips">슬기로운 집사생활 팁</option>
+                <option value="chat">집사들의 수다방</option>
+              </select>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="postTitle">제목</label>
+              <input type="text" id="postTitle" name="postTitle" placeholder="제목을 입력하세요" required>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="postContent">내용</label>
+              <textarea id="postContent" name="postContent" rows="10" placeholder="내용을 입력하세요" required></textarea>
+              <span class="error-message" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="postImages">이미지 첨부 (선택)</label>
+              <input type="file" id="postImages" name="postImages" accept="image/*" multiple>
+              <p class="image-upload-notice">이미지 첨부 기능은 현재 준비중입니다.</p>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-cancel" onclick="history.back()">취소</button>
+              <button type="submit" class="btn-submit">등록</button>
+            </div>
+          </form>
+          
+          <p class="preparation-notice" style="display: none;">글쓰기 기능은 현재 개발 중입니다. <br>곧 사용하실 수 있도록 준비하겠습니다!</p>
+
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-route="../dogsHtml/index.html">🏠<span>홈</span></button>
+        <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
+        <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
+        <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
+        <button class="nav-btn" data-route="../page/my-page.html">👤<span>내 정보</span></button> 
+      </nav>
+    </section>
+  </div>
+
+  <script src="../js/write-post.js"></script>
+</body>
+</html> 

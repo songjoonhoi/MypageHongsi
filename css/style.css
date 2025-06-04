@@ -36,7 +36,7 @@
       font-family: 'Noto Sans KR', sans-serif; /* 폰트 로딩 후 적용 */
       background: #f2f2f2; /* 전체 배경색 */
       color: var(--text);
-      overflow: hidden; /* 전체 스크롤 방지 */
+      /* overflow: hidden; /* 전체 스크롤 방지 - 모바일에서 문제를 일으킬 수 있으므로 아래 미디어쿼리에서 제어 */
     }
 
     /* 전역 img 스타일 */
@@ -124,7 +124,7 @@
       display: flex;
       height: calc(100% - 3rem); /* 헤더 높이만큼 제외 */
       margin-top: 3rem; /* 헤더 아래에서 시작 */
-      overflow: hidden; /* 전체 스크롤 방지 */
+      /* overflow: hidden; /* 전체 스크롤 방지 - 모바일에서 문제를 일으킬 수 있으므로 아래 미디어쿼리에서 제어 */
     }
 
     /* 1) 왼쪽 패널 */
@@ -244,16 +244,16 @@
       font-size: 0.9rem; /* 폰트 크기 조정 */
     }
     /* 각 버튼에 개별 색상 적용 */
-    .btn-category[data-route="/dang-jarang"] {
+    .btn-category[data-route="../page/dang-jarang.html"] {
       background: #ffe0b2; /* 밝은 오렌지 계열 */
     }
-    .btn-category[data-route="/dang-with"] {
+    .btn-category[data-route="../page/dang-with.html"] {
       background: #ffccbc; /* 더 부드러운 오렌지 계열 */
     }
-    .btn-category[data-route="/dang-store"] {
+    .btn-category[data-route="../page/dang-store.html"] {
       background: #c8e6c9; /* 밝은 녹색 계열 */
     }
-    .btn-category[data-route="/dang-adopt"] {
+    .btn-category[data-route="../page/dang-adopt.html"] {
       background: #bbdefb; /* 밝은 파란색 계열 */
     }
 
@@ -583,18 +583,14 @@
     /* 반응형 (≤768px) */
     @media (max-width: 768px) {
       body {
-        padding-top: 3.5rem; /* 헤더 높이만큼 패딩 */
-        padding-bottom: 0;
-        align-items: flex-start;
-        background: #f2f2f2; /* 모바일에서는 단색 배경 */
+        padding-top: 3rem; /* 헤더 높이만큼 패딩 (fixed header 때문) */
+        overflow-y: auto; /* 모바일에서는 세로 스크롤 허용 */
+        overflow-x: hidden; /* 가로 스크롤은 계속 방지 */
       }
       .wrapper {
         flex-direction: column;
-        height: auto;
-        width: 100%;
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
+        height: auto; /* 컨텐츠에 따라 높이 자동 조절 */
+        overflow: visible; /* 내부 컨텐츠가 넘칠 수 있도록 허용 (main-scroll이 스크롤 담당) */
       }
       .left-panel,
       .main-panel {
@@ -607,11 +603,8 @@
         padding: 1rem; /* 모바일 패딩 조정 */
       }
       .main-scroll {
-        display: block;
-        overflow: visible;
-        margin: 0;
         padding: 1rem;
-        padding-bottom: 5rem;
+        padding-bottom: 5rem; /* 하단 고정 네비 공간 확보 */
       }
       .bottom-nav {
         position: fixed;
@@ -620,7 +613,10 @@
         border-radius: 0;
       }
       .main-panel {
-        padding-bottom: 0;
+        flex: 1 0 auto; /* 모바일에서는 flex-grow, flex-shrink 허용, flex-basis는 auto */
+        border-radius: 0;
+        height: auto; /* 컨텐츠에 따라 높이 자동 조절 */
+        min-height: calc(100vh - 3rem - 3.5rem); /* 화면높이 - 헤더 - 하단네비 */
       }
       .right-panel {
         display: none;

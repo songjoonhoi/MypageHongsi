@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>댕 스토어 - Hongsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/dang-store.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="btn-back" onclick="history.back()">&lt;</button>
+    <h1 class="site-logo">댕 스토어</h1>
+    <div class="header-icons-group">
+      <a href="#" class="header-icon-btn notification-btn" title="알림">🔔</a>
+      <a href="#" class="header-icon-btn post-btn" title="글쓰기">📝</a>
+      <a href="#" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
+      <a href="/login.html" class="header-login-link">로그인/회원가입</a>
+    </div>
+  </header>
+
+  <div class="wrapper single-page-wrapper">
+    <section class="main-panel expanded-panel">
+      <div class="main-scroll">
+        <h2>댕 스토어 인기 상품</h2>
+        <p class="sub">다양한 댕댕이 용품을 만나보세요!</p>
+
+        <div class="content-grid">
+          <div class="content-card">
+            <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Toy" alt="강아지 장난감 이미지">
+            <div class="card-content">
+              <p class="card-title">삑삑이 강아지 장난감</p>
+            </div>
+          </div>
+          <div class="content-card">
+            <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Food" alt="강아지 사료 이미지">
+            <div class="card-content">
+              <p class="card-title">유기농 강아지 사료</p>
+            </div>
+          </div>
+          <div class="content-card">
+            <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Clothes" alt="강아지 옷 이미지">
+            <div class="card-content">
+              <p class="card-title">귀여운 강아지 옷</p>
+            </div>
+          </div>
+          <div class="content-card">
+            <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Snack" alt="강아지 간식 이미지">
+            <div class="card-content">
+              <p class="card-title">수제 강아지 간식</p>
+            </div>
+          </div>
+          <div class="content-card">
+            <img src="https://placehold.co/200x150/d8a48f/5a3e2b?text=Dog+Bed" alt="강아지 침대 이미지">
+            <div class="card-content">
+              <p class="card-title">푹신한 강아지 침대</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-route="../dogsHtml/index.html">🏠<span>홈</span></button>
+        <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
+        <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
+        <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
+        <button class="nav-btn" data-route="../page/login.html">👤<span>로그인</span></button>
+      </nav>
+    </section>
+  </div>
+
+  <script src="../js/dang-store.js"></script>
+</body>
+</html> 

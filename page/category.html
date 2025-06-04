@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>카테고리 - Hongsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/category.css">
+</head>
+<body>
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>댕댕이 이벤트 🎉</h2>
+      <p>현재 다양한 댕댕이 이벤트를 준비 중에 있습니다.</p>
+      <p>조금만 기다려주시면 곧 재미있는 이벤트로 찾아뵙겠습니다!</p>
+      <p>감사합니다.</p>
+    </div>
+  </div>
+
+  <div id="csModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>고객센터 💬</h2>
+      <p>고객센터 기능은 현재 준비 중입니다.</p>
+      <p>궁금하신 점이나 불편사항은 잠시 후 정식으로 마련될 고객센터를 통해 문의해주시면 감사하겠습니다.</p>
+      <p>빠른 시일 내에 도움을 드릴 수 있도록 하겠습니다.</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <button class="btn-back" onclick="history.back()">&lt;</button>
+    <h1 class="site-logo">카테고리</h1>
+  </header>
+
+  <div class="wrapper single-page-wrapper">
+    <section class="main-panel expanded-panel">
+      <div class="main-scroll">
+        <div class="content-container">
+          <h2>서비스 바로가기</h2>
+          <p class="sub">Hongsi의 주요 서비스로 빠르게 이동하세요.</p>
+
+          <div class="service-grid">
+            <a href="../page/dang-jarang.html#dog-brag-input" class="service-card">
+              <div class="service-icon">📝</div>
+              <h3>댕 자랑하기</h3>
+              <p>우리집 댕댕이 자랑글을 작성하고 공유해요.</p>
+            </a>
+            <a href="../page/dang-jarang.html" class="service-card">
+              <div class="service-icon">🐶</div>
+              <h3>댕 자랑 둘러보기</h3>
+              <p>다른 친구들의 사랑스러운 모습을 구경하세요.</p>
+            </a>
+            <a href="../page/dang-with.html" class="service-card">
+              <div class="service-icon">🧡</div>
+              <h3>댕과 함께 장소찾기</h3>
+              <p>반려견 동반 가능 장소를 찾아보세요.</p>
+            </a>
+            <a href="../page/dang-store.html" class="service-card">
+              <div class="service-icon">🛍️</div>
+              <h3>댕 스토어</h3>
+              <p>다양한 반려견 용품을 만나보세요.</p>
+            </a>
+            <a href="../page/dang-adopt.html" class="service-card">
+              <div class="service-icon">🏠</div>
+              <h3>가족이 되어주세요</h3>
+              <p>새로운 가족을 기다리는 친구들을 도와주세요.</p>
+            </a>
+            <a href="../page/login.html" class="service-card">
+              <div class="service-icon">👤</div>
+              <h3>내 정보 / 로그인</h3>
+              <p>회원 정보를 확인하거나 로그인하세요.</p>
+            </a>
+            <a href="#" class="service-card coming-soon" data-modal-target="eventModal">
+              <div class="service-icon">🎉</div>
+              <h3>댕댕이 이벤트</h3>
+              <p>다양한 이벤트에 참여해보세요. (준비중)</p>
+            </a>
+            <a href="#" class="service-card coming-soon" data-modal-target="csModal">
+              <div class="service-icon">💬</div>
+              <h3>고객센터</h3>
+              <p>궁금한 점이나 불편한 점을 문의하세요. (준비중)</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-route="../dogsHtml/index.html">🏠<span>홈</span></button>
+        <button class="nav-btn active" data-route="../page/category.html">🗂️<span>카테고리</span></button>
+        <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
+        <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
+        <button class="nav-btn" data-route="../page/login.html">👤<span>로그인</span></button>
+      </nav>
+    </section>
+  </div>
+
+  <script src="../js/category.js"></script>
+</body>
+</html> 
