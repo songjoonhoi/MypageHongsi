@@ -13,7 +13,8 @@
 
       --shadow-subtle: 0 1px 3px rgba(0,0,0,0.04);
       --shadow-light: 0 2px 6px rgba(0,0,0,0.06);
-      --shadow-hover: 0 4px 12px rgba(0,0,0,0.1);
+      --shadow-medium: 0 4px 10px rgba(0,0,0,0.08); /* 약간 더 강조된 그림자 */
+      --shadow-hover: 0 6px 14px rgba(0,0,0,0.12); /* 호버 시 그림자 강화 */
     }
 
     /* Reset & Global (dang-jarang.css와 동일) */
@@ -33,18 +34,21 @@
       height: 3rem; background: var(--primary); color: var(--white);
       display: flex; align-items: center; padding: 0 1rem;
       z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      /* justify-content: space-between; <- 로그인 페이지에서는 로고를 중앙에 가깝게 */
+      justify-content: space-between;
     }
     .btn-back {
       background: none; border: none; color: var(--white); font-size: 1.2rem;
-      margin-right: 0.5rem; cursor: pointer; padding: 0.3rem 0.6rem;
+      margin-right: 1rem; cursor: pointer; padding: 0.3rem 0.6rem;
       border-radius: 50%; transition: background 0.2s ease;
     }
     .btn-back:hover { background-color: rgba(255, 255, 255, 0.2); }
-    .site-logo { /* 로고를 중앙에 배치 (뒤로가기 버튼 고려) */
-      font-size: 1.1rem; font-weight: bold;
-      text-align: center; flex-grow: 1; /* 남은 공간 차지하여 중앙 정렬 효과 */
-      margin-right: 2.5rem; /* 뒤로가기 버튼 너비만큼 오른쪽 여백 (대략적인 값) */
+    .site-logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: left;
+      flex-grow: 0;
+      margin-right: auto;
+      margin-left: 0.5rem;
     }
 
     /* Wrapper 및 Main Panel (dang-jarang.css와 유사) */
@@ -65,94 +69,115 @@
 
     /* ----- 로그인 페이지 스타일 ----- */
     .login-container {
-      max-width: 400px;
-      margin: 2rem auto;
-      padding: 2rem;
+      max-width: 420px; /* 너비 살짝 증가 */
+      margin: 2.5rem auto; /* 상하 마진 증가 */
+      padding: 2.5rem;    /* 내부 패딩 증가 */
       background: var(--white);
-      border-radius: 10px;
-      box-shadow: var(--shadow-light);
+      border-radius: 12px; /* 모서리 둥글게 */
+      box-shadow: var(--shadow-medium); /* 그림자 살짝 강조 */
       text-align: center;
     }
     .login-container h2 {
-      font-size: 1.8rem;
+      font-size: 2rem; /* 타이틀 크기 증가 */
       color: var(--primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
     }
     .login-container .sub {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--muted);
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
-    .login-form .form-group {
-      margin-bottom: 0.75rem; /* 각 폼 그룹 하단 여백 */
-      text-align: left; /* 그룹 내부는 좌측 정렬 */
+    /* HTML은 auth-form을 사용하므로, 기존 .login-form 선택자를 .auth-form으로 변경 또는 추가 */
+    .auth-form .form-group {
+      margin-bottom: 1rem; /* 이전 값으로 복원 또는 약간 줄임 */
+      text-align: left;
     }
 
-    .login-form input[type="email"],
-    .login-form input[type="password"] {
+    .auth-form label {
+      display: block;
+      margin-bottom: 0.5rem; /* 이전 값으로 복원 또는 약간 줄임 */
+      font-weight: 400;
+      color: var(--text);
+      font-size: 0.85rem; /* 레이블 폰트 크기 살짝 더 작게 */
+    }
+
+    .auth-form input[type="email"],
+    .auth-form input[type="password"] {
       width: 100%;
-      padding: 0.8rem 1rem;
-      /* margin-bottom: 1rem; /* form-group으로 이동 */
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 1rem;
+      padding: 0.8rem 0.9rem; /* 인풋 패딩 가로/세로 줄임 */
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;  /* 인풋 모서리 둥글기 살짝 줄임 */
+      font-size: 0.95rem; /* 인풋 폰트 크기 살짝 줄임 */
       font-family: 'Noto Sans KR', sans-serif;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      background-color: #fdfdfd;
     }
-    .login-form input:focus {
+    .auth-form input[type="email"]:focus,
+    .auth-form input[type="password"]:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(216, 164, 143, 0.2);
+      box-shadow: 0 0 0 3px rgba(216, 164, 143, 0.2); /* 포커스 시 그림자 두께 살짝 줄임 */
+      background-color: var(--white);
     }
 
-    /* 유효성 검사 관련 스타일 */
-    .login-form input.invalid {
-      border-color: #e74c3c; /* 오류 시 테두리 색상 */
-      box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+    .auth-form input.invalid {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
     }
 
     .error-message {
-      display: block; /* 메시지를 인풋 아래에 표시 */
-      color: #e74c3c; /* 오류 메시지 색상 */
-      font-size: 0.8rem;
-      margin-top: 0.25rem;
+      display: block;
+      color: var(--danger);
+      font-size: 0.8rem; /* 에러 메시지 폰트 크기 살짝 줄임 */
+      margin-top: 0.4rem; /* 에러 메시지 위쪽 간격 살짝 줄임 */
       margin-left: 0.1rem;
-      min-height: 1em; /* 메시지가 없을 때도 공간 유지 (선택적) */
+      min-height: 1.1em;
     }
 
-    .btn-login {
+    /* HTML은 btn-submit을 사용하므로, 기존 .btn-login 선택자를 .btn-submit으로 변경 또는 확인 */
+    .btn-submit {
       width: 100%;
-      padding: 0.9rem;
+      padding: 0.8rem 0.9rem; /* 버튼 패딩 가로/세로 줄임 */
       background: var(--primary);
       color: var(--white);
       border: none;
-      border-radius: 5px;
-      font-size: 1rem;
+      border-radius: 6px; /* 버튼 모서리 둥글기 살짝 줄임 */
+      font-size: 1rem; /* 버튼 폰트 크기 살짝 줄임 */
       font-weight: 500;
       cursor: pointer;
-      transition: background 0.2s ease;
-      margin-bottom: 1rem;
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+      margin-top: 0.6rem; /* 버튼 위쪽 여백 줄임 */
+      margin-bottom: 1rem; /* 버튼 아래쪽 여백 줄임 */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
-    .btn-login:hover {
-      background: #4a3223; /* 조금 더 어두운 primary */
+    .btn-submit:hover {
+      background: #4a3223;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1); /* 호버 시 그림자 살짝 줄임 */
+      transform: translateY(-1px);
+    }
+    .btn-submit:active {
+      transform: translateY(0px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
 
     .form-options {
       display: flex;
       justify-content: space-between;
-      font-size: 0.85rem;
-      margin-bottom: 1.5rem;
+      align-items: center; /* 수직 정렬 */
+      font-size: 0.9rem; /* 글씨 크기 조정 */
+      margin-bottom: 1.8rem;
     }
     .text-link {
         color: var(--primary);
         text-decoration: none;
-        font-weight: 500; /* register.css와 통일성 위해 추가 */
+        font-weight: 500;
     }
     .text-link:hover {
         text-decoration: underline;
-        color: var(--accent); /* register.css와 통일성 위해 추가 */
+        color: var(--accent);
     }
-    .coming-soon-link { /* modal 기능 추가 전 임시 스타일 */
+    .coming-soon-link {
         opacity: 0.7;
         cursor: default;
     }
@@ -161,59 +186,84 @@
         color: var(--primary);
     }
 
-    .social-login .social-login-text {
+    /* Social Login Section */
+    .social-login-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+    }
+
+    .social-login-title {
+      text-align: center;
       font-size: 0.9rem;
       color: var(--muted);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       position: relative;
-      text-align: center;
     }
-    .social-login .social-login-text::before,
-    .social-login .social-login-text::after {
+
+    .social-login-title::before,
+    .social-login-title::after {
       content: "";
       position: absolute;
       top: 50%;
-      width: calc(50% - 50px); /* 텍스트 영역 제외 */
+      width: calc(50% - 60px); /* 텍스트 영역 제외, 길이 조정 */
       height: 1px;
       background-color: #ddd;
     }
-    .social-login .social-login-text::before { left: 0; }
-    .social-login .social-login-text::after { right: 0; }
+    .social-login-title::before { left: 0; }
+    .social-login-title::after { right: 0; }
 
+    .social-login-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
 
-    .social-btn {
-      width: 100%;
-      padding: 0.7rem;
-      margin-bottom: 0.8rem;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      background-color: var(--white);
-      color: var(--text);
+    /* 공통 소셜 로그인 버튼 스타일 수정 */
+    .btn-social-login {
+      padding: 0.8rem; /* 패딩 조정 */
+      border-radius: 6px; /* 모서리 둥글게 */
       font-size: 0.95rem;
-      font-weight: 500;
+      font-weight: 500; /* 글꼴 두께 추가 */
       cursor: pointer;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid transparent; /* 기본 테두리는 투명하게 */
       display: flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none; /* 링크 스타일 제거 */
+      box-shadow: var(--shadow-subtle);
     }
-    /* .social-btn img 관련 스타일 제거 또는 주석 처리 */
-    /*
-    .social-btn img {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
+
+    .btn-social-login:hover {
+      opacity: 0.9; /* hover 시 미세한 투명도 변화 대신 그림자 효과 강화 */
+      box-shadow: var(--shadow-light);
     }
-    */
-    .social-btn.kakao { border-color: #FEE500; background-color: #FEE500; color: #000000; }
-    .social-btn.kakao:hover { background-color: #f0d900; }
 
-    .social-btn.google { border-color: #DB4437; color: #DB4437; } /* Google 빨간색 테두리, 텍스트 */
-    .social-btn.google:hover { background-color: #f5efef; }
+    .btn-social-login.kakao {
+      background-color: #FEE500;
+      color: #191919; /* 카카오 싱크 권장 다크 브라운/블랙 */
+      border-color: #FEE500;
+    }
 
-    .social-btn.naver { border-color: #03C75A; background-color: #03C75A; color: var(--white); }
-    .social-btn.naver:hover { background-color: #02b353; }
+    .btn-social-login.google {
+      background-color: #FFFFFF;
+      color: #4285F4; /* 구글 블루 */
+      border: 1px solid #dadce0; /* 구글 버튼 표준 테두리 */
+    }
+    .btn-social-login.google:hover {
+      background-color: #f8f9fa; /* 구글 버튼 호버 색상 */
+      border-color: #c6cacc;
+    }
 
+    .btn-social-login.naver {
+      background-color: #03C75A;
+      color: #FFFFFF;
+      border-color: #03C75A;
+    }
+    .btn-social-login.naver:hover {
+      background-color: #02b350; /* 네이버 호버 시 약간 어둡게 */
+    }
 
     /* 하단 내비게이션 (dang-jarang.css와 동일) */
     .bottom-nav {
@@ -248,27 +298,32 @@
     /* 반응형 (dang-jarang.css의 반응형 규칙 중 일부 적용 및 수정) */
     @media (max-width: 768px) {
       body {
-        /* padding-top: 3.5rem; 제거 또는 3rem으로 수정 (헤더 높이에 맞게) */
         padding-top: 3rem;
-        overflow: auto; /* 모바일에서는 스크롤 허용 */
+        overflow: auto;
       }
-      .site-header { padding: 0 0.5rem; } /* 모바일에서 헤더 패딩 약간 줄임 */
-      .site-logo { margin-right: 1.5rem; font-size: 1rem; } /* 모바일 로고 크기 및 여백 조정 */
+      .site-header { padding: 0 0.5rem; }
+      .site-logo { margin-right: 1.5rem; font-size: 1rem; }
       .btn-back { margin-right: 0.2rem; }
 
       .main-scroll { padding: 1rem; padding-bottom: 5rem; }
       .login-container {
-        margin: 1rem auto; /* 모바일에서 상하 여백 줄임 */
-        padding: 1.5rem;
-        width: calc(100% - 2rem); /* 좌우 여백 고려 */
+        margin: 1.5rem auto; /* 모바일 상하 여백 조정 */
+        padding: 2rem;    /* 모바일 내부 패딩 조정 */
+        width: calc(100% - 2rem);
+        border-radius: 10px; /* 모바일에서는 살짝 덜 둥글게 */
       }
-      .login-container h2 { font-size: 1.6rem; }
-      .login-container .sub { font-size: 0.85rem; margin-bottom: 1.5rem; }
+      .login-container h2 { font-size: 1.8rem; }
+      .login-container .sub { font-size: 0.9rem; margin-bottom: 2rem; }
 
-      .social-login .social-login-text::before,
-      .social-login .social-login-text::after {
-        width: calc(50% - 40px); /* 모바일에서 간격 조정 */
+      .social-login-title::before,
+      .social-login-title::after {
+        width: calc(50% - 50px); /* 모바일에서 간격 조정 */
       }
 
-      .bottom-nav { position: fixed; } /* 모바일에서는 하단 고정 */
+      .btn-social-login {
+        padding: 0.9rem; /* 모바일에서 버튼 패딩 살짝 키움 */
+        font-size: 1rem;
+      }
+
+      .bottom-nav { position: fixed; }
     } 
