@@ -7,24 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 하단 내비게이션 라우팅 및 active 상태 관리 (페이지 공통) - 현재 로직 유지
+  // 하단 내비게이션 라우팅 및 active 상태 관리 (페이지 공통)
   const currentFullUrl = window.location.href;
-  const navButtons = document.querySelectorAll('.nav-btn'); // navButtons 변수 추가
+  const navButtons = document.querySelectorAll('.nav-btn');
+
   navButtons.forEach(btn => {
     const routeAttribute = btn.dataset.route;
     if (routeAttribute) {
       const targetUrl = new URL(routeAttribute, currentFullUrl).href;
-      // 현재 페이지와 버튼의 data-route를 비교하여 active 클래스 부여
-      if (currentFullUrl.endsWith(routeAttribute.substring(2))) { // ../ 고려
+      if (currentFullUrl === targetUrl) {
         navButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
       }
-      // 회원가입 페이지에서 "로그인" 버튼이 활성화되도록 하는 로직은 register.js에 이미 있음
-
       btn.addEventListener('click', (e) => {
-        const currentPath = window.location.pathname;
-        const targetPath = new URL(routeAttribute, window.location.href).pathname;
-        if (currentPath === targetPath) { // 현재 페이지와 목적지가 같으면 이동 방지
+        if (currentFullUrl === targetUrl) {
           e.preventDefault();
           return;
         }
@@ -32,98 +28,76 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-  // --- 여기까지 공통 네비게이션 로직 ---
 
   // ------ login.html 페이지 특화 로직 ------ //
-  const loginForm = document.getElementById('login-form');
-  const emailInput = document.getElementById('email');
-  const passwordInput = document.getElementById('password');
+  if (window.location.pathname.includes('login.html')) {
+    const loginForm = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
 
-  const showError = (inputElement, message) => {
-    const formGroup = inputElement.closest('.form-group');
-    const errorElement = formGroup.querySelector('.error-message');
-    inputElement.classList.add('invalid');
-    errorElement.textContent = message;
-  };
+    if (loginForm) {
+      loginForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // 기본 제출 동작 방지
+        let isValid = true;
 
-  const clearError = (inputElement) => {
-    const formGroup = inputElement.closest('.form-group');
-    const errorElement = formGroup.querySelector('.error-message');
-    inputElement.classList.remove('invalid');
-    errorElement.textContent = '';
-  };
+        // 이메일 유효성 검사
+        if (!emailInput.value.trim()) {
+          emailError.textContent = '이메일을 입력해주세요.';
+          isValid = false;
+        } else if (!isValidEmail(emailInput.value.trim())) {
+          emailError.textContent = '올바른 이메일 형식이 아닙니다.';
+          isValid = false;
+        } else {
+          emailError.textContent = '';
+        }
 
-  const validateField = (inputElement, errorMessage) => {
-    if (!inputElement.checkValidity()) {
-        showError(inputElement, inputElement.validationMessage || errorMessage);
-        return false;
+        // 비밀번호 유효성 검사
+        if (!passwordInput.value.trim()) {
+          passwordError.textContent = '비밀번호를 입력해주세요.';
+          isValid = false;
+        } else {
+          passwordError.textContent = '';
+        }
+
+        if (isValid) {
+          // 실제 로그인 로직은 여기에 구현 (현재는 알림만)
+          alert('로그인 시도 (실제 기능은 준비중입니다.)');
+          // loginForm.submit(); // 실제 서버로 제출할 경우
+        } else {
+            // 첫번째 에러 필드로 포커스 이동 (선택 사항)
+            const firstErrorField = loginForm.querySelector('.error-message:not(:empty)');
+            if (firstErrorField && firstErrorField.previousElementSibling) {
+                firstErrorField.previousElementSibling.focus();
+            }
+        }
+      });
     }
-    clearError(inputElement);
-    return true;
-  };
 
-  const validateEmail = () => {
-    if (emailInput.value.trim() === '') {
-        showError(emailInput, '이메일을 입력해주세요.');
-        return false;
-    } else if (!emailInput.checkValidity()) {
-        showError(emailInput, '올바른 이메일 형식이 아닙니다.');
-        return false;
+    function isValidEmail(email) {
+      // 간단한 이메일 형식 검사 정규식
+      const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+      return emailRegex.test(email);
     }
-    clearError(emailInput);
-    return true;
-  };
-
-  if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      let isFormValid = true;
-      if (!validateEmail()) isFormValid = false;
-      if (!validateField(passwordInput, '비밀번호를 입력해주세요.')) isFormValid = false;
-
-      if (isFormValid) {
-        console.log('Login attempt:', { email: emailInput.value, password: passwordInput.value });
-        alert('로그인 성공! (실제 서버 제출 로직은 여기에 구현)');
-        // loginForm.submit(); // 실제 서버로 폼 데이터 전송 시
-      } else {
-        console.log('Login form invalid');
-      }
+    
+    // "준비중" 링크 처리
+    document.querySelectorAll('.coming-soon-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('해당 기능은 현재 준비중입니다.');
+        });
     });
 
-    // 입력 시 오류 메시지 실시간 제거
-    [emailInput, passwordInput].forEach(input => {
-        input.addEventListener('input', () => {
-            if (input.classList.contains('invalid')) {
-                if (input.checkValidity()) { 
-                    clearError(input);
-                }
-            }
+    // 간편 로그인 버튼 처리 (준비중 알림)
+    document.querySelectorAll('.btn-social-login').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const platform = e.target.classList.contains('kakao') ? '카카오' :
+                             e.target.classList.contains('google') ? 'Google' :
+                             e.target.classList.contains('naver') ? '네이버' : '소셜';
+            alert(platform + ' 로그인 기능은 현재 준비중입니다.\n아이콘 이미지를 직접 추가해주세요. (예: ../assets/kakao_icon.png)');
         });
     });
   }
-
-  const findCredentialsLink = document.getElementById('find-credentials');
-  if (findCredentialsLink) {
-    findCredentialsLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('아이디/비밀번호 찾기 기능은 준비 중입니다.');
-    });
-  }
-
-  // registerLink 이벤트 리스너는 HTML href로 동작하므로 유지 또는 필요시 수정
-  // const registerLink = document.getElementById('register');
-
-  const socialButtons = document.querySelectorAll('.social-btn');
-  socialButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const platform = button.classList.contains('kakao') ? '카카오'
-                     : button.classList.contains('google') ? '구글'
-                     : button.classList.contains('naver') ? '네이버'
-                     : '알 수 없음';
-      console.log(platform + ' 로그인 시도');
-      alert(platform + '으로 로그인합니다. (준비 중)');
-    });
-  });
-  // ---------------------------------------------------- //
+  // ------------------------------------------------- //
 }); 

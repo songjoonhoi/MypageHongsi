@@ -211,26 +211,124 @@
         justify-content: space-between; 
     }
 
-    .content-card .card-title { /* dang-jarang의 dog-name 과 유사 */
+    .content-card .card-title {
         font-size: 1.15rem;
         font-weight: 700;
         color: var(--primary);
-        margin-bottom: 0.5rem;
-        text-align: center;
+        margin-bottom: 0.3rem; /* 뱃지와의 간격을 위해 약간 줄임 */
+        text-align: left; /* 카드 제목은 좌측 정렬로 변경 */
     }
 
-    .content-card .card-text { /* dang-jarang의 post-text 와 유사 */
-        font-size: 0.9rem;
+    .card-badge {
+        display: inline-block;
+        padding: 0.25em 0.6em;
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25rem;
+        margin-bottom: 0.5rem;
+        color: var(--white);
+    }
+    .card-badge.cafe         { background-color: #A569BD; } /* 보라색 계열 */
+    .card-badge.restaurant   { background-color: #EC7063; } /* 붉은색 계열 */
+    .card-badge.park         { background-color: #58D68D; } /* 녹색 계열 */
+    .card-badge.accommodation{ background-color: #5DADE2; } /* 파란색 계열 */
+    /* 기타 필요한 뱃지 스타일 추가 가능 */
+
+    .card-location {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+    .card-location::before {
+        content: "📍 "; /* 이모지 직접 사용 대신 content로 추가 */
+    }
+
+    .card-description {
+        font-size: 0.85rem;
         color: var(--text);
         line-height: 1.5;
+        margin-bottom: 0.8rem;
+        text-align: left;
+        /* 여러 줄 말줄임표 (필요시) - 기존 card-text와 유사 */
         overflow: hidden; 
         text-overflow: ellipsis; 
         display: -webkit-box;
-        -webkit-line-clamp: 4; 
+        -webkit-line-clamp: 3; /* 최대 3줄 */
         -webkit-box-orient: vertical;
-        text-align: justify; 
     }
-    
+
+    .btn-card-detail {
+        display: block;
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+        margin-top: auto; /* 카드 하단에 버튼 위치 (flex-grow와 함께) */
+        background-color: var(--accent);
+        color: var(--white);
+        border: none;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+    .btn-card-detail:hover {
+        background-color: var(--primary);
+    }
+    .coming-soon-btn {
+        opacity: 0.7;
+        cursor: default;
+    }
+    .coming-soon-btn:hover {
+        background-color: var(--accent); /* 호버 효과 변경 없음 */
+    }
+
+    /* 플레이스홀더 카드 스타일 */
+    .placeholder-card {
+        border-style: dashed;
+        border-color: #e0e0e0;
+        background-color: var(--bg-light);
+        justify-content: center; /* 내부 콘텐츠 중앙 정렬 */
+        align-items: center; /* 내부 콘텐츠 중앙 정렬 */
+        min-height: 200px; /* 다른 카드들과 높이 비슷하게 */
+    }
+    .placeholder-card:hover {
+        transform: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .card-content-placeholder {
+        text-align: center;
+        color: var(--muted);
+    }
+    .card-content-placeholder p {
+        font-size: 0.95rem;
+    }
+
+    /* 콘텐츠 없을 때 메시지 스타일 (HTML에서 주석 처리됨) */
+    .no-content-message {
+        text-align: center;
+        padding: 2rem;
+        color: var(--muted);
+        background-color: var(--bg-light);
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+    .no-content-message p {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .content-card .card-text { /* 기존 card-text 정의와 중복될 수 있으므로, 확인 후 필요한 경우 수정 또는 이 설명 부분을 사용 */
+        /* ... 만약 card-description으로 대체되지 않고 별도로 사용된다면 여기에 스타일 정의 ... */
+        /* 현재 dang-with.html 에서는 card-description을 사용하므로 이 부분은 영향이 적을 수 있음 */
+    }
+
     /* 가족이 되어주세요 카드 특별 스타일 */
     .content-card.adopt-card .card-content a {
         text-decoration: none;

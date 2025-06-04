@@ -411,3 +411,113 @@
         height: 3.5rem; /* 모바일 하단바 높이 유지 */
       }
     } 
+
+    .content-card.adopt-card .card-title {
+        font-size: 1.1rem; /* 동물 이름 크기 */
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 0.25rem;
+        text-align: left; /* 좌측 정렬 */
+        display: flex; /* 이름과 성별 아이콘 정렬 */
+        align-items: center;
+    }
+    .animal-gender {
+        font-size: 0.9em;
+        font-weight: normal;
+        margin-left: 0.4em;
+    }
+    .animal-gender.female { color: #E91E63; } /* 여아 색상 (핑크 계열) */
+    .animal-gender.male   { color: #2196F3; } /* 남아 색상 (파랑 계열) */
+
+    .animal-info {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+
+    .content-card.adopt-card .card-description { /* 입양 카드용 설명 */
+        font-size: 0.85rem;
+        color: var(--text);
+        line-height: 1.4;
+        margin-bottom: 0.5rem; /* 보호소 정보와의 간격 */
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* 최대 3줄 */
+        -webkit-box-orient: vertical;
+        min-height: 4.2em; /* 3줄 높이 확보 */
+    }
+
+    .animal-shelter {
+        font-size: 0.8rem;
+        color: var(--accent); /* 강조색 */
+        font-weight: 500;
+        margin-bottom: 0.8rem;
+        text-align: left;
+    }
+    .animal-shelter::before {
+        content: "보호중: ";
+        color: var(--muted);
+        font-weight: normal;
+    }
+
+    /* 버튼 (dang-with.css 등과 동일하게 가져옴) */
+    .btn-card-detail {
+        display: block; width: 100%; padding: 0.6rem 0.8rem; margin-top: auto; 
+        background-color: var(--accent); color: var(--white); border: none;
+        border-radius: 5px; font-size: 0.9rem; font-weight: 500; text-align: center;
+        text-decoration: none; cursor: pointer; transition: background-color 0.2s ease;
+    }
+    .btn-card-detail:hover { background-color: var(--primary); }
+    .coming-soon-btn { opacity: 0.7; cursor: default; }
+    .coming-soon-btn:hover { background-color: var(--accent); }
+
+    /* 플레이스홀더 카드 (dang-with.css 등과 동일하게 가져옴) */
+    .placeholder-card {
+        border-style: dashed; border-color: #e0e0e0; background-color: var(--bg-light);
+        justify-content: center; align-items: center; min-height: 200px; /* 다른 카드와 높이 유사하게 */
+    }
+    .placeholder-card:hover { transform: none; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+    .card-content-placeholder { text-align: center; color: var(--muted); }
+    .card-content-placeholder p { font-size: 0.95rem; }
+
+    /* 입양 유의사항 섹션 */
+    .adoption-notice {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background-color: var(--bg-light);
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid var(--bg-dark);
+    }
+    .adoption-notice h3 {
+        font-size: 1.1rem;
+        color: var(--primary);
+        margin-bottom: 0.75rem;
+    }
+    .adoption-notice p {
+        font-size: 0.9rem;
+        color: var(--text);
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+    }
+    .adoption-notice p:last-child {
+        margin-bottom: 0;
+    }
+    .adoption-notice .text-link {
+        color: var(--accent);
+        font-weight: 500;
+        text-decoration: underline;
+    }
+    .adoption-notice .text-link:hover {
+        color: var(--primary);
+    }
+
+    /* 콘텐츠 없을 때 메시지 (dang-with.css 등과 동일하게 가져옴) */
+    .no-content-message {
+        text-align: center; padding: 2rem; color: var(--muted);
+        background-color: var(--bg-light); border-radius: 8px; margin-top: 1rem;
+    }
+    .no-content-message p { margin-bottom: 0.5rem; font-size: 1rem; } 

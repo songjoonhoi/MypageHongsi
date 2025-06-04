@@ -211,26 +211,89 @@
         justify-content: space-between; 
     }
 
-    .content-card .card-title { /* dang-jarang의 dog-name 과 유사 */
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
-        text-align: center;
+    .content-card .card-title { /* 기존 스타일에서 text-align 변경 가능 */
+        font-size: 1.1rem; /* 상품명은 약간 작게 조정 가능 */
+        font-weight: 600; /* 굵기 조정 */
+        color: var(--text); /* 기본 텍스트 색상 사용 가능 */
+        margin-bottom: 0.3rem;
+        text-align: left; /* 상품명 좌측 정렬 */
+        min-height: 2.4em; /* 두 줄 높이 확보 (상품명 길이에 따라) */
     }
 
-    .content-card .card-text { /* dang-jarang의 post-text 와 유사 */
-        font-size: 0.9rem;
-        color: var(--text);
-        line-height: 1.5;
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-        display: -webkit-box;
-        -webkit-line-clamp: 4; 
-        -webkit-box-orient: vertical;
-        text-align: justify; 
+    /* 뱃지 공통 스타일 (dang-with.css와 동일하게 가져옴) */
+    .card-badge {
+        display: inline-block; padding: 0.25em 0.6em; font-size: 0.75rem; font-weight: 500;
+        line-height: 1; text-align: center; white-space: nowrap; vertical-align: baseline;
+        border-radius: .25rem; margin-bottom: 0.5rem; color: var(--white);
     }
-    
+    /* 스토어 전용 뱃지 */
+    .card-badge.new-item     { background-color: #2ECC71; } /* 초록색 계열 (신상품) */
+    .card-badge.best-item    { background-color: #E74C3C; } /* 붉은색 계열 (인기상품) */
+    .card-badge.sale-item    { background-color: #F39C12; } /* 주황색 계열 (세일) */
+
+    .card-price {
+        font-size: 1.05rem;
+        font-weight: bold;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+    .discount-price {
+        color: #e74c3c; /* 할인 가격 강조 */
+        margin-right: 0.5em;
+    }
+    .original-price {
+        font-size: 0.85em;
+        color: var(--muted);
+        text-decoration: line-through;
+    }
+
+    /* 설명 (dang-with.css와 동일하게 가져옴) */
+    .card-description {
+        font-size: 0.85rem; color: var(--text); line-height: 1.4;
+        margin-bottom: 0.8rem; text-align: left;
+        overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+        -webkit-line-clamp: 2; /* 상품 설명은 최대 2줄 */
+        -webkit-box-orient: vertical;
+        min-height: 2.8em; /* 두 줄 높이 확보 */
+    }
+
+    /* 버튼 (dang-with.css와 동일하게 가져옴) */
+    .btn-card-detail {
+        display: block; width: 100%; padding: 0.6rem 0.8rem; margin-top: auto; 
+        background-color: var(--accent); color: var(--white); border: none;
+        border-radius: 5px; font-size: 0.9rem; font-weight: 500; text-align: center;
+        text-decoration: none; cursor: pointer; transition: background-color 0.2s ease;
+    }
+    .btn-card-detail:hover { background-color: var(--primary); }
+    .coming-soon-btn { opacity: 0.7; cursor: default; }
+    .coming-soon-btn:hover { background-color: var(--accent); }
+
+    /* 플레이스홀더 카드 (dang-with.css와 동일하게 가져옴) */
+    .placeholder-card {
+        border-style: dashed; border-color: #e0e0e0; background-color: var(--bg-light);
+        justify-content: center; align-items: center; min-height: 200px;
+    }
+    .placeholder-card:hover { transform: none; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+    .card-content-placeholder { text-align: center; color: var(--muted); }
+    .card-content-placeholder p { font-size: 0.95rem; }
+
+    /* 콘텐츠 없을 때 메시지 (dang-with.css와 동일하게 가져옴) */
+    .no-content-message {
+        text-align: center; padding: 2rem; color: var(--muted);
+        background-color: var(--bg-light); border-radius: 8px; margin-top: 1rem;
+    }
+    .no-content-message p { margin-bottom: 0.5rem; font-size: 1rem; }
+
+    /* 기존 .content-card .card-text 와의 관계 명확히:
+       dang-store.html에서는 card-description을 사용하므로, 
+       아래 card-text 스타일은 이 페이지에 직접적인 영향은 없거나, 
+       다른 곳에서 .card-text를 사용할 경우를 대비한 것일 수 있습니다. */
+    .content-card .card-text {
+        font-size: 0.9rem;
+        /* ... (기존 card-text 스타일 유지 또는 필요시 수정) ... */
+    }
+
     /* 가족이 되어주세요 카드 특별 스타일 */
     .content-card.adopt-card .card-content a {
         text-decoration: none;

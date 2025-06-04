@@ -25,36 +25,65 @@
   <div class="wrapper single-page-wrapper">
     <section class="main-panel expanded-panel">
       <div class="main-scroll">
-        <h2>댕과 함께 갈 수 있는 곳</h2>
-        <p class="sub">댕댕이와 즐거운 시간을 보내세요!</p>
+        <h2>댕댕이와 함께 갈 수 있는 곳 🐾</h2>
+        <p class="sub">애견 동반 카페, 식당, 공원 등 다양한 장소를 찾아보세요!</p>
 
         <div class="content-grid">
           <div class="content-card">
-            <img src="https://placehold.co/200x150/5a3e2b/ffffff?text=Pet+Cafe+1" alt="앙증맞은 흰색 강아지 크롭" />
+            <img src="https://placehold.co/200x150/7B5A4B/ffffff?text=애견동반카페" alt="포근한 분위기의 애견 동반 카페 내부" />
             <div class="card-content">
-              <p class="card-title">크롭 카페</p>
-              <!-- <p class="card-text">설명이 필요하면 여기에 추가</p> -->
+              <span class="card-badge cafe">카페</span>
+              <p class="card-title">아늑한 댕댕이 쉼터</p>
+              <p class="card-location">📍 서울시 강남구</p>
+              <p class="card-description">넓은 잔디밭과 맛있는 커피가 있는 곳. 반려견용 메뉴도 준비되어 있어요!</p>
+              <button type="button" class="btn-card-detail coming-soon-btn">상세보기 (준비중)</button>
             </div>
           </div>
           <div class="content-card">
-            <img src="https://placehold.co/200x150/5a3e2b/ffffff?text=Pet+Cafe+2" alt="앙증맞은 흰색 강아지 크롭" />
+            <img src="https://placehold.co/200x150/A07C68/ffffff?text=애견동반식당" alt="테라스가 있는 애견 동반 식당" />
             <div class="card-content">
-              <p class="card-title">댕댕이 키친</p>
+              <span class="card-badge restaurant">식당</span>
+              <p class="card-title">멍슐랭 가이드</p>
+              <p class="card-location">📍 경기도 판교</p>
+              <p class="card-description">특별한 날, 반려견과 함께 즐길 수 있는 파인 다이닝. 예약 필수!</p>
+              <button type="button" class="btn-card-detail coming-soon-btn">상세보기 (준비중)</button>
             </div>
           </div>
           <div class="content-card">
-            <img src="https://placehold.co/200x150/5a3e2b/ffffff?text=Pet+Cafe+3" alt="앙증맞은 흰색 강아지 크롭" />
+            <img src="https://placehold.co/200x150/C39D8B/ffffff?text=반려견공원" alt="넓은 잔디밭이 있는 반려견 공원" />
             <div class="card-content">
-              <p class="card-title">멍멍 브런치</p>
+              <span class="card-badge park">공원</span>
+              <p class="card-title">댕댕이 놀이동산</p>
+              <p class="card-location">📍 인천시 송도</p>
+              <p class="card-description">마음껏 뛰어놀 수 있는 넓은 공원. 다양한 어질리티 시설도 있어요.</p>
+              <button type="button" class="btn-card-detail coming-soon-btn">상세보기 (준비중)</button>
             </div>
           </div>
           <div class="content-card">
-            <img src="https://placehold.co/200x150/5a3e2b/ffffff?text=Pet+Cafe+4" alt="앙증맞은 흰색 강아지 크롭" />
+            <img src="https://placehold.co/200x150/D8BFA8/ffffff?text=애견펜션" alt="반려견과 함께 묵을 수 있는 펜션 외관" />
             <div class="card-content">
-              <p class="card-title">펫 프렌들리</p>
+              <span class="card-badge accommodation">숙소</span>
+              <p class="card-title">별밤 댕댕이 펜션</p>
+              <p class="card-location">📍 강원도 평창</p>
+              <p class="card-description">조용하고 편안한 휴식을 위한 애견 동반 펜션. 개별 운동장 완비!</p>
+              <button type="button" class="btn-card-detail coming-soon-btn">상세보기 (준비중)</button>
             </div>
+          </div>
+          <!-- 추가 카드 예시 -->
+          <div class="content-card placeholder-card">
+             <div class="card-content-placeholder">
+                <p>더 많은 장소가 곧 추가될 예정입니다! 🐶</p>
+             </div>
           </div>
         </div>
+        
+        <!-- 콘텐츠 없을 때 표시 (초기에는 숨김) -->
+        <!-- 
+        <div class="no-content-message" style="display: none;">
+          <p>현재 등록된 장소가 없습니다. 😢</p>
+          <p>더 좋은 정보를 제공하기 위해 열심히 준비 중이니 조금만 기다려주세요!</p>
+        </div>
+        -->
       </div>
 
       <nav class="bottom-nav">

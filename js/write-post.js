@@ -7,25 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 하단 내비게이션 라우팅 및 active 상태 관리 (페이지 공통)
+  // 하단 내비게이션 라우팅 (페이지 공통)
   const currentFullUrl = window.location.href;
   const navButtons = document.querySelectorAll('.nav-btn');
 
-  let કોઈActiveButtonFound = true; // 기본적으로 active 버튼을 찾았다고 가정
-
   navButtons.forEach(btn => {
+    // write-post.html 페이지에서는 어떤 하단 탭도 활성화하지 않습니다.
+    btn.classList.remove('active');
+
     const routeAttribute = btn.dataset.route;
     if (routeAttribute) {
-      const targetUrl = new URL(routeAttribute, currentFullUrl).href;
-
-      if (currentFullUrl === targetUrl) {
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        कोईActiveButtonFound = false; // 정확히 일치하는 버튼을 찾음
-      }
-
       btn.addEventListener('click', (e) => {
-        if (currentFullUrl === targetUrl) {
+        const targetUrl = new URL(routeAttribute, currentFullUrl).href;
+        if (currentFullUrl === targetUrl) { // 현재 페이지와 목적지가 같으면 이동 방지
           e.preventDefault();
           return;
         }
@@ -33,22 +27,77 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+  // --- 여기까지 공통 네비게이션 로직 ---
 
-  // 만약 정확히 일치하는 data-route를 가진 버튼이 없다면, 모든 active 클래스 제거 (선택적)
-  // write-post.html이나 notifications.html 같이 하단탭과 직접 매칭 안되는 페이지용
-  // if (कोईActiveButtonFound) {
-  //   navButtons.forEach(b => b.classList.remove('active'));
-  // }
-  
-  // ------ write-post.html 페이지 특화 로직은 여기에 추가 ------ //
+  // ------ write-post.html 페이지 특화 로직 ------ //
   const writePostForm = document.getElementById('writePostForm');
+  const postCategorySelect = document.getElementById('postCategory');
+  const postTitleInput = document.getElementById('postTitle');
+  const postContentTextarea = document.getElementById('postContent');
+
+  const showError = (inputElement, message) => {
+    const formGroup = inputElement.closest('.form-group');
+    const errorElement = formGroup.querySelector('.error-message');
+    inputElement.classList.add('invalid');
+    errorElement.textContent = message;
+  };
+
+  const clearError = (inputElement) => {
+    const formGroup = inputElement.closest('.form-group');
+    const errorElement = formGroup.querySelector('.error-message');
+    inputElement.classList.remove('invalid');
+    errorElement.textContent = '';
+  };
+
+  const validateSelectField = (selectElement, errorMessage) => {
+    if (selectElement.value === '') {
+        showError(selectElement, errorMessage);
+        return false;
+    }
+    clearError(selectElement);
+    return true;
+  };
+
+  const validateInputField = (inputElement, errorMessage) => {
+    if (!inputElement.checkValidity()) { // HTML5 required 속성 등 활용
+        showError(inputElement, inputElement.validationMessage || errorMessage);
+        return false;
+    }
+    clearError(inputElement);
+    return true;
+  };
+
   if (writePostForm) {
     writePostForm.addEventListener('submit', (e) => {
-      e.preventDefault(); // 기본 폼 제출 방지
-      // 실제로는 여기서 폼 데이터를 수집하고 서버로 전송하는 로직이 필요합니다.
-      alert('등록 기능은 현재 준비 중입니다.');
-      // 예시: const formData = new FormData(writePostForm);
-      // fetch('/api/posts', { method: 'POST', body: formData }).then(...);
+      e.preventDefault(); 
+      
+      let isFormValid = true;
+      if (!validateSelectField(postCategorySelect, '게시판을 선택해주세요.')) isFormValid = false;
+      if (!validateInputField(postTitleInput, '제목을 입력해주세요.')) isFormValid = false;
+      if (!validateInputField(postContentTextarea, '내용을 입력해주세요.')) isFormValid = false;
+
+      if (isFormValid) {
+        alert('게시글이 성공적으로 등록되었습니다! (실제 서버 제출 로직은 여기에 구현)');
+        // const formData = new FormData(writePostForm);
+        // console.log(...formData.entries());
+        // writePostForm.reset(); // 폼 초기화
+      } else {
+        console.log('Write post form invalid');
+      }
+    });
+
+    // 입력/변경 시 오류 메시지 실시간 제거
+    [postCategorySelect, postTitleInput, postContentTextarea].forEach(input => {
+        const eventType = input.tagName.toLowerCase() === 'select' ? 'change' : 'input';
+        input.addEventListener(eventType, () => {
+            if (input.classList.contains('invalid')) {
+                if (input.tagName.toLowerCase() === 'select') {
+                    if (input.value !== '') clearError(input);
+                } else {
+                    if (input.checkValidity()) clearError(input);
+                }
+            }
+        });
     });
   }
   // ------------------------------------------------------- //
