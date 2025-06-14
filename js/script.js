@@ -139,4 +139,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // My Page: Profile Image Upload Preview
+  const profileImageUpload = document.getElementById('profile-image-upload');
+  const profilePreviewImage = document.getElementById('profile-preview-image');
+
+  if (profileImageUpload && profilePreviewImage) {
+      profileImageUpload.addEventListener('change', function(event) {
+          const file = event.target.files[0];
+          if (file && file.type.startsWith('image/')) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  profilePreviewImage.src = e.target.result;
+              }
+              reader.readAsDataURL(file);
+          }
+      });
+  }
+
 }); 

@@ -365,11 +365,16 @@
     }
 
     /* 상품 그리드 */
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
     .product-list .card {
-      flex: 0 0 auto;
-      width: clamp(120px, 40%, 200px);
+      /* 불필요한 flex 속성 제거 */
     }
     .product-list img {
+      width: 100%;
       height: auto;
       object-fit: cover;
       border-radius: 0;
@@ -422,6 +427,305 @@
     }
     .family-list .card a:hover {
       color: var(--accent);
+    }
+
+    /* Adoption Notice Section */
+    .adoption-notice {
+      position: -webkit-sticky;
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
+      margin-top: 8rem; /* 위쪽 여백을 늘려 아래로 더 내림 */
+      padding: 1rem;
+      background: var(--white);
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .adoption-notice h3 {
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-size: 1.2rem;
+    }
+
+    .adoption-notice p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .adoption-notice a.text-link {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--white);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .adoption-notice a.text-link:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Category Page List Style */
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .category-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--shadow-light);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .category-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .category-icon {
+      font-size: 2rem;
+      margin-right: 1rem;
+      background-color: var(--bg-dark);
+      padding: 0.5rem;
+      border-radius: 8px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .category-text {
+      flex: 1;
+    }
+
+    .category-text .name {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .category-text .description {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .category-arrow {
+      font-size: 1.5rem;
+      color: var(--muted);
+    }
+
+    /* Life Page Card Style */
+    .life-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .life-card {
+      display: flex;
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--shadow-light);
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+
+    .life-card .card-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .life-card .card-content {
+      flex: 1;
+    }
+
+    .life-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .life-card p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .life-card .btn-life-action {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--white);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .life-card .btn-life-action:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .tip-preview-images {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .tip-preview-images img {
+      border-radius: 4px;
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+    }
+
+    .qna-preview-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .qna-preview-list .qna-item {
+      background-color: var(--bg-medium);
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+    }
+    .qna-preview-list .qna-item:hover {
+      background-color: var(--bg-dark);
+    }
+
+    /* Search Page Style */
+    .search-page-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1; /* main-scroll 영역을 채우도록 */
+      padding-bottom: 3rem; /* 하단 네비게이션 고려 */
+    }
+
+    .search-card {
+      width: 100%;
+      max-width: 600px;
+      background-color: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-hover);
+      text-align: center;
+    }
+    .search-card-header .search-icon {
+      font-size: 3rem;
+      line-height: 1;
+    }
+    .search-card-header h2 {
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+    .search-card-header p {
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .gcse-search {
+      margin-bottom: 2rem;
+    }
+
+    /* Google Custom Search Style Override */
+    .gsc-control-cse {
+      background-color: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+
+    table.gsc-search-box {
+      margin-bottom: 0 !important;
+      width: 100% !important;
+      table-layout: fixed !important;
+    }
+
+    td.gsc-input {
+      width: auto !important; /* Let it fill remaining space */
+    }
+
+    .gsc-input-box {
+      border: 1px solid #ddd !important;
+      height: 40px !important;
+      width: 100% !important;
+      border-radius: 30px 0 0 30px !important;
+      overflow: hidden !important;
+      background: #fff !important;
+    }
+
+    input.gsc-input {
+      background: none !important;
+      height: 100% !important;
+      padding: 0 1rem !important;
+      border: none !important;
+      font-size: 1rem !important;
+    }
+
+    .gsc-search-button-v2 {
+      width: 60px !important;
+      height: 44px !important;
+      padding: 0 !important;
+      background-color: var(--accent) !important;
+      border: 1px solid var(--accent) !important;
+      border-radius: 0 30px 30px 0 !important;
+    }
+    .gsc-search-button-v2 svg{
+      margin: 0 auto;
+      display: block;
+    }
+
+    .gsc-clear-button {
+      display: none !important;
+    }
+
+    .popular-searches {
+      text-align: center;
+    }
+    .popular-searches h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .search-tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .search-tag {
+      background-color: var(--bg-medium);
+      border: 1px solid #eee;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+    }
+    .search-tag:hover {
+      background-color: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+      transform: translateY(-2px);
     }
 
 
@@ -485,50 +789,52 @@
     .right-panel p {
         font-size: 1rem;
         color: var(--text);
-        line-height: normal;
+        line-height: 1.6;
     }
 
 
     /* New styles for Gemini API integration */
     .brag-generator-container {
-      background: var(--bg-medium); /* 메인 패널 배경색과 다르게 */
-      border-radius: 8px;
+      position: -webkit-sticky;
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
+      margin-top: 2rem;
       padding: 1rem;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-subtle);
-      text-align: center; /* 중앙 정렬 */
+      background: var(--white);
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.06);
     }
 
     .brag-generator-container h3 {
       font-size: 1.1rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       font-weight: 600;
     }
 
     #dog-brag-input {
-      width: calc(100% - 20px); /* 패딩 고려 */
-      padding: 10px;
+      width: 100%;
+      padding: 0.6rem;
       border: 1px solid #ddd;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      font-family: 'Noto Sans KR', sans-serif;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      font-family: inherit;
       font-size: 0.9rem;
-      resize: vertical; /* 세로 크기 조절 가능 */
+      resize: vertical;
     }
 
     .generate-btn {
       background: var(--accent);
       color: var(--white);
       border: none;
-      border-radius: 20px;
       padding: 0.6rem 1.2rem;
-      font-size: 0.95rem;
-      font-weight: 600;
+      border-radius: 20px;
       cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
-      box-shadow: var(--shadow-subtle);
-      display: inline-block; /* 중앙 정렬을 위해 */
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      width: 100%;
+      margin-bottom: 0.75rem;
     }
 
     .generate-btn:hover {
@@ -538,25 +844,19 @@
     }
 
     #brag-output-container {
-      margin-top: 1.5rem;
-      background: var(--bg-light);
-      border: 1px solid rgba(0,0,0,0.05);
-      border-radius: 8px;
-      padding: 1rem;
-      min-height: 50px; /* 최소 높이 */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: left; /* 텍스트는 왼쪽 정렬 */
-      position: relative; /* 로딩 스피너 위치를 위해 */
-      box-shadow: var(--shadow-subtle);
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background-color: #f7f7f7;
+      border-radius: 4px;
+      min-height: 3rem;
+      position: relative;
     }
 
     .generated-text {
       font-size: 0.9rem;
-      color: var(--text);
       line-height: 1.5;
-      white-space: pre-wrap; /* 줄바꿈 유지 */
+      color: var(--text);
+      white-space: pre-wrap;
     }
 
     /* Loading Spinner */
@@ -650,8 +950,10 @@
         font-size: 0.85rem;
         padding: 0.6rem 0.5rem;
       }
+      .product-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .popular-list .card,
-      .product-list .card,
       .shoppingmal-list .card,
       .family-list .card {
         width: clamp(150px, 45vw, 250px);
@@ -662,4 +964,288 @@
       .popular .sub, .product .sub, .shoppingmal .sub, .family .sub {
         font-size: 0.9rem;
       }
+    }
+
+    /* My Page Style */
+    .my-page-container {
+      padding-top: 1.5rem;
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background-color: var(--bg-dark);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .profile-image-wrapper {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .profile-image-wrapper .profile-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-image-wrapper .edit-icon {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      transition: opacity 0.2s ease;
+      opacity: 0;
+    }
+
+    .profile-image-wrapper:hover .edit-icon {
+      opacity: 1;
+    }
+
+    .profile-info .nickname {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .profile-info .bio {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .profile-info .btn-edit-profile {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+      background-color: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .profile-info .btn-edit-profile:hover {
+      opacity: 0.9;
+    }
+
+    .menu-section {
+      margin-bottom: 2rem;
+    }
+    .menu-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .my-page-container .menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .my-page-container .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--shadow-subtle);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease-in-out;
+    }
+    .my-page-container .menu-item:hover {
+      transform: translateX(5px);
+      box-shadow: var(--shadow-light);
+    }
+    .my-page-container .menu-icon {
+      font-size: 1.2rem;
+      margin-right: 0.75rem;
+    }
+    .my-page-container .menu-text {
+      flex: 1;
+      font-weight: 500;
+    }
+    .my-page-container .menu-arrow {
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    /* Content Title Centering */
+    .content-container > h2,
+    .content-container > p.sub {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Auth Page (Login, Register) Style */
+    .auth-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 2rem 0;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 420px;
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-hover);
+    }
+    .auth-card-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .auth-card-header .auth-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+    .auth-card-header h2 {
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+    .auth-card-header p {
+      color: var(--muted);
+    }
+    .auth-form .form-group {
+      margin-bottom: 1rem;
+    }
+    .auth-form label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    .auth-form input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .auth-form .btn-submit {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background-color: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .auth-links {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .auth-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .auth-links .separator {
+      margin: 0 0.5rem;
+      color: #ccc;
+    }
+    .social-login-section .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1.5rem 0;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .social-login-section .divider::before,
+    .social-login-section .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #eee;
+    }
+    .social-login-section .divider:not(:empty-span)::before {
+      margin-right: .25em;
+    }
+    .social-login-section .divider:not(:empty-span)::after {
+      margin-left: .25em;
+    }
+    .social-login-section .social-login-title {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .social-login-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .btn-social-login {
+      padding: 0.75rem;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-social-login i {
+      width: 18px;
+      height: 18px;
+      margin-right: 0.5rem;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .btn-social-login.naver {
+      background-color: #03C75A;
+      color: white;
+    }
+    .btn-social-login.naver i {
+      background-image: url('https://logotyp.us/files/naver.svg');
+    }
+    .btn-social-login.kakao {
+      background-color: #FEE500;
+      color: #191919;
+    }
+    .btn-social-login.kakao i {
+      background-image: url('https://logotyp.us/files/kakao.svg');
+    }
+    .btn-social-login.google {
+      background-color: #FFFFFF;
+      color: #444;
+      border: 1px solid #ddd;
+    }
+    .btn-social-login.google i {
+      background-image: url('https://logotyp.us/files/google.svg');
+    }
+
+    .auth-form .terms-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .auth-form .terms-group input[type="checkbox"] {
+      width: auto;
+      margin-top: 0.15em;
+    }
+    .auth-form .terms-group .terms-label {
+      font-weight: normal;
+      font-size: 0.9rem;
+      margin-bottom: 0;
     }

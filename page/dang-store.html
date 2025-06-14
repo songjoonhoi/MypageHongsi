@@ -3,84 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>댕 스토어 - Hongsi</title>
+  <title>Hongsi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/dang-store.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <header class="site-header">
-    <button class="btn-back" onclick="history.back()">&lt;</button>
-    <h1 class="site-logo">댕 스토어</h1>
+    <h1 class="site-logo">Hongsi</h1>
     <div class="header-icons-group">
-      <a href="#" class="header-icon-btn notification-btn" title="알림">🔔</a>
-      <a href="#" class="header-icon-btn post-btn" title="글쓰기">📝</a>
-      <a href="#" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
-      <a href="/login.html" class="header-login-link">로그인/회원가입</a>
+      <a href="../page/notifications.html" class="header-icon-btn notification-btn" title="알림">🔔</a>
+      <a href="../page/write-post.html" class="header-icon-btn post-btn" title="글쓰기">📝</a>
+      <a href="../page/my-page.html" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
+      <a href="../page/login.html" class="header-login-link">로그인/회원가입</a>
     </div>
   </header>
 
-  <div class="wrapper single-page-wrapper">
-    <section class="main-panel expanded-panel">
+  <div class="wrapper">
+
+    <section class="left-panel">
+      <div class="illustration">
+        <img src="../dogsHtml/mainimage.jpg" alt="따뜻한 세상을 만나는 홍시 강아지 일러스트" />
+      </div>
+      <div class="tagline">
+        <p>나의 작은 가족이<br/>따듯한 세상을 만나는 방법</p>
+        <span class="logo-text">Hongsi</span>
+      </div>
+      <form class="search-form">
+        <input type="text" placeholder="어떤 상품을 찾으시나요?" />
+        <button class="search-button">🔍</button>
+      </form>
+    </section>
+
+    <section class="main-panel">
       <div class="main-scroll">
-        <h2>댕댕이 필수템 총집합! 🛍️</h2>
-        <p class="sub">사료, 간식, 장난감, 의류 등 다양한 애견용품을 만나보세요.</p>
+        <nav class="category-nav">
+          <button class="btn-category" data-route="../page/dang-jarang.html">🐶 댕 자랑</button>
+          <button class="btn-category" data-route="../page/dang-with.html">🧡 댕과 함께</button>
+          <button class="btn-category" data-route="../page/dang-store.html">🛍️ 댕 스토어</button>
+          <button class="btn-category" data-route="../page/dang-adopt.html">🏠 가족이 되어주세요</button>
+        </nav>
+        <section class="shoppingmal">
+          <h2>댕댕이 필수템 총집합! 🛍️</h2>
+          <p class="sub">사료, 간식, 장난감, 의류 등 다양한 애견용품을 만나보세요.</p>
 
-        <div class="content-grid store-grid">
-          <div class="content-card product-card">
-            <img src="https://placehold.co/200x150/E8DAEF/5A3E2B?text=프리미엄+사료" alt="프리미엄 강아지 사료 패키지" />
-            <div class="card-content">
-              <span class="card-badge new-item">NEW</span>
-              <p class="card-title">튼튼! 프리미엄 유기농 사료 (2kg)</p>
-              <p class="card-price"><span class="discount-price">28,000원</span> <span class="original-price">32,000원</span></p>
-              <p class="card-description">신선한 재료로 만든 우리 아이 건강 맞춤 사료. 전연령견 급여 가능.</p>
-              <button type="button" class="btn-card-detail coming-soon-btn">상품 보기 (준비중)</button>
-            </div>
-          </div>
-          <div class="content-card product-card">
-            <img src="https://placehold.co/200x150/D4E6F1/5A3E2B?text=수제간식세트" alt="다양한 종류의 강아지 수제 간식 세트" />
-            <div class="card-content">
-              <p class="card-title">냠냠! 수제 간식 종합 세트 (5종)</p>
-              <p class="card-price">19,900원</p>
-              <p class="card-description">첨가물 NO! 100% 국내산 재료로 만든 믿을 수 있는 수제 간식 모음.</p>
-              <button type="button" class="btn-card-detail coming-soon-btn">상품 보기 (준비중)</button>
-            </div>
-          </div>
-          <div class="content-card product-card">
-            <img src="https://placehold.co/200x150/D1F2EB/5A3E2B?text=강아지장난감" alt="내구성 좋은 강아지 터그 장난감" />
-            <div class="card-content">
-              <span class="card-badge best-item">BEST</span>
-              <p class="card-title">스트레스 해소! 터그 놀이 장난감</p>
-              <p class="card-price">12,500원</p>
-              <p class="card-description">친환경 소재로 만들어 안심하고 가지고 놀 수 있는 튼튼한 장난감.</p>
-              <button type="button" class="btn-card-detail coming-soon-btn">상품 보기 (준비중)</button>
-            </div>
-          </div>
-          <div class="content-card product-card">
-            <img src="https://placehold.co/200x150/FCF3CF/5A3E2B?text=강아지옷" alt="귀여운 디자인의 강아지 니트 스웨터" />
-            <div class="card-content">
-              <p class="card-title">따뜻한 겨울 니트 스웨터 (네이비)</p>
-              <p class="card-price">22,000원</p>
-              <p class="card-description">부드러운 소재로 착용감이 좋고 보온성이 뛰어난 데일리룩 아이템.</p>
-              <button type="button" class="btn-card-detail coming-soon-btn">상품 보기 (준비중)</button>
-            </div>
-          </div>
-           <div class="content-card placeholder-card">
-             <div class="card-content-placeholder">
-                <p>더 많은 상품이 곧 추가될 예정입니다! 🦴</p>
-             </div>
-          </div>
-        </div>
-
-        <!-- 콘텐츠 없을 때 표시 (초기에는 숨김) -->
-        <!-- 
-        <div class="no-content-message" style="display: none;">
-          <p>현재 판매 중인 상품이 없습니다. 😢</p>
-          <p>더 좋은 상품으로 찾아뵙기 위해 준비 중이니 조금만 기다려주세요!</p>
-        </div>
-        -->
+          <ul class="product-list">
+            <li class="card">
+              <img src="https://placehold.co/200x150/E8DAEF/5A3E2B?text=프리미엄+사료" alt="프리미엄 강아지 사료 패키지" />
+              <div class="info"><p class="name">튼튼! 프리미엄 유기농 사료 (2kg)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/D4E6F1/5A3E2B?text=수제간식세트" alt="다양한 종류의 강아지 수제 간식 세트" />
+              <div class="info"><p class="name">냠냠! 수제 간식 종합 세트 (5종)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/D1F2EB/5A3E2B?text=강아지장난감" alt="내구성 좋은 강아지 터그 장난감" />
+              <div class="info"><p class="name">스트레스 해소! 터그 놀이 장난감</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/FCF3CF/5A3E2B?text=강아지옷" alt="귀여운 디자인의 강아지 니트 스웨터" />
+              <div class="info"><p class="name">따뜻한 겨울 니트 스웨터 (네이비)</p></div>
+            </li>
+            <li class="card placeholder-card">
+                <div class="info"><p class="name">더 많은 상품이 곧 추가될 예정입니다! 🦴</p></div>
+            </li>
+          </ul>
+        </section>
       </div>
 
       <nav class="bottom-nav">
@@ -88,11 +78,18 @@
         <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
         <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
         <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
-        <button class="nav-btn" data-route="../page/login.html">👤<span>로그인</span></button>
+        <button class="nav-btn" data-route="../page/my-page.html">👤<span>내 정보</span></button>
       </nav>
     </section>
+
+    <aside class="right-panel">
+      <h2>Hongsi에 오신 것을 환영합니다!</h2>
+      <p>이곳은 당신의 작은 가족과 함께하는 따뜻한 세상을 위한 공간입니다.</p>
+      <p>오른쪽 패널은 데스크톱 환경에서 추가 정보를 표시하거나, 광고, 추천 콘텐츠 등을 보여줄 수 있습니다.</p>
+    </aside>
+
   </div>
 
-  <script src="../js/dang-store.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html> 

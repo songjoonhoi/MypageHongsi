@@ -3,56 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>로그인 - Hongsi</title>
+  <title>Hongsi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <header class="site-header">
-    <button class="btn-back" onclick="history.back()">&lt;</button>
-    <h1 class="site-logo">로그인 / 회원가입</h1>
-    <!-- 헤더 아이콘 그룹 제거 -->
+    <h1 class="site-logo">Hongsi</h1>
+    <div class="header-icons-group">
+      <a href="../page/notifications.html" class="header-icon-btn notification-btn" title="알림">🔔</a>
+      <a href="../page/write-post.html" class="header-icon-btn post-btn" title="글쓰기">📝</a>
+      <a href="../page/my-page.html" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
+      <a href="../page/login.html" class="header-login-link">로그인/회원가입</a>
+    </div>
   </header>
 
-  <div class="wrapper single-page-wrapper">
-    <section class="main-panel expanded-panel">
+  <div class="wrapper">
+
+    <section class="left-panel">
+      <div class="illustration">
+        <img src="../dogsHtml/mainimage.jpg" alt="따뜻한 세상을 만나는 홍시 강아지 일러스트" />
+      </div>
+      <div class="tagline">
+        <p>나의 작은 가족이<br/>따듯한 세상을 만나는 방법</p>
+        <span class="logo-text">Hongsi</span>
+      </div>
+      <form class="search-form">
+        <input type="text" placeholder="어떤 상품을 찾으시나요?" />
+        <button class="search-button">🔍</button>
+      </form>
+    </section>
+
+    <section class="main-panel">
       <div class="main-scroll">
-        <div class="content-container login-container">
-          
-          <h2 class="form-title">로그인</h2>
-          
-          <form id="loginForm" class="auth-form">
-            <div class="form-group">
-              <label for="email">이메일</label>
-              <input type="email" id="email" name="email" required>
-              <div class="error-message" id="emailError"></div>
+        <nav class="category-nav">
+          <button class="btn-category" data-route="../page/dang-jarang.html">🐶 댕 자랑</button>
+          <button class="btn-category" data-route="../page/dang-with.html">🧡 댕과 함께</button>
+          <button class="btn-category" data-route="../page/dang-store.html">🛍️ 댕 스토어</button>
+          <button class="btn-category" data-route="../page/dang-adopt.html">🏠 가족이 되어주세요</button>
+        </nav>
+        <div class="auth-container">
+          <div class="auth-card">
+            <div class="auth-card-header">
+              <span class="auth-icon">🔑</span>
+              <h2>로그인</h2>
+              <p>홍시의 다양한 서비스를 이용해보세요.</p>
             </div>
-            <div class="form-group">
-              <label for="password">비밀번호</label>
-              <input type="password" id="password" name="password" required>
-              <div class="error-message" id="passwordError"></div>
-            </div>
-            <button type="submit" class="btn-submit">로그인</button>
-          </form>
 
-          <div class="auth-links">
-            <a href="../page/register.html">회원가입</a>
-            <span class="separator">|</span>
-            <a href="#" class="coming-soon-link">아이디/비밀번호 찾기 (준비중)</a>
+            <form id="loginForm" class="auth-form">
+              <div class="form-group">
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+              </div>
+              <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+              </div>
+              <button type="submit" class="btn-submit">로그인</button>
+            </form>
+  
+            <div class="auth-links">
+              <a href="../page/register.html">회원가입</a>
+              <span class="separator">|</span>
+              <a href="#" class="coming-soon-link">아이디/비밀번호 찾기 (준비중)</a>
+            </div>
+  
+            <div class="social-login-section">
+              <div class="divider">
+                <span>또는</span>
+              </div>
+              <p class="social-login-title">소셜 계정으로 간편하게 로그인</p>
+              <div class="social-login-buttons">
+                <button type="button" class="btn-social-login naver"><i></i>네이버 로그인</button>
+                <button type="button" class="btn-social-login kakao"><i></i>카카오 로그인</button>
+                <button type="button" class="btn-social-login google"><i></i>Google 로그인</button>
+              </div>
+            </div>
           </div>
-
-          <div class="social-login-section">
-            <p class="social-login-title">간편 로그인</p>
-            <div class="social-login-buttons">
-              <button type="button" class="btn-social-login kakao">카카오 로그인</button>
-              <button type="button" class="btn-social-login google">Google 로그인</button>
-              <button type="button" class="btn-social-login naver">네이버 로그인</button>
-            </div>
-          </div>
-
         </div>
       </div>
 
@@ -61,11 +91,18 @@
         <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
         <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
         <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
-        <button class="nav-btn active" data-route="../page/login.html">👤<span>로그인</span></button> 
+        <button class="nav-btn active" data-route="../page/my-page.html">👤<span>내 정보</span></button> 
       </nav>
     </section>
+
+    <aside class="right-panel">
+      <h2>Hongsi에 오신 것을 환영합니다!</h2>
+      <p>이곳은 당신의 작은 가족과 함께하는 따뜻한 세상을 위한 공간입니다.</p>
+      <p>오른쪽 패널은 데스크톱 환경에서 추가 정보를 표시하거나, 광고, 추천 콘텐츠 등을 보여줄 수 있습니다.</p>
+    </aside>
+
   </div>
 
-  <script src="../js/login.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html> 

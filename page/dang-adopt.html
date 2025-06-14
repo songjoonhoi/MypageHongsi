@@ -3,78 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>가족이 되어주세요 - Hongsi</title>
+  <title>Hongsi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/dang-adopt.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <header class="site-header">
-    <button class="btn-back" onclick="history.back()">&lt;</button>
-    <h1 class="site-logo">가족이 되어주세요</h1>
+    <h1 class="site-logo">Hongsi</h1>
     <div class="header-icons-group">
-      <a href="#" class="header-icon-btn notification-btn" title="알림">🔔</a>
-      <a href="#" class="header-icon-btn post-btn" title="글쓰기">📝</a>
-      <a href="#" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
-      <a href="/login.html" class="header-login-link">로그인/회원가입</a>
+      <a href="../page/notifications.html" class="header-icon-btn notification-btn" title="알림">🔔</a>
+      <a href="../page/write-post.html" class="header-icon-btn post-btn" title="글쓰기">📝</a>
+      <a href="../page/my-page.html" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
+      <a href="../page/login.html" class="header-login-link">로그인/회원가입</a>
     </div>
   </header>
 
-  <div class="wrapper single-page-wrapper">
-    <section class="main-panel expanded-panel">
-      <div class="main-scroll">
-        <h2>새로운 가족을 기다리는 천사들 💖</h2>
-        <p class="sub">따뜻한 관심과 사랑으로 아이들에게 행복을 선물해주세요.</p>
+  <div class="wrapper">
 
-        <div class="content-grid adopt-grid">
-          <div class="content-card adopt-card">
-            <img src="https://placehold.co/200x150/FADBD8/5A3E2B?text=믹스견+해맑음" alt="해맑게 웃는 갈색 믹스견" />
-            <div class="card-content">
-              <p class="card-title">사랑이 <span class="animal-gender female">(여아♀)</span></p>
-              <p class="animal-info">믹스견 / 2살 추정</p>
-              <p class="card-description">사람을 너무 좋아하고 애교가 넘치는 귀염둥이! 기본 훈련도 잘 되어있어요.</p>
-              <p class="animal-shelter">보호센터: 행복보호소 (서울)</p>
-              <button type="button" class="btn-card-detail coming-soon-btn">입양 문의 (준비중)</button>
-            </div>
-          </div>
-          <div class="content-card adopt-card">
-            <img src="https://placehold.co/200x150/D6EAF8/5A3E2B?text=코숏+시크" alt="창밖을 바라보는 시크한 코리안숏헤어 고양이" />
-            <div class="card-content">
-              <p class="card-title">까미 <span class="animal-gender male">(남아♂)</span></p>
-              <p class="animal-info">코리안숏헤어 / 1살</p>
-              <p class="card-description">시크한 매력이 있지만, 친해지면 골골송을 불러주는 개냥이랍니다. 조용한 집을 선호해요.</p>
-              <p class="animal-shelter">보호센터: 나비네 (경기)</p>
-              <button type="button" class="btn-card-detail coming-soon-btn">입양 문의 (준비중)</button>
-            </div>
-          </div>
-          <div class="content-card adopt-card">
-            <img src="https://placehold.co/200x150/D0ECE7/5A3E2B?text=리트리버+순둥" alt="순한 눈망울의 골든 리트리버" />
-            <div class="card-content">
-              <p class="card-title">골디 <span class="animal-gender male">(남아♂)</span></p>
-              <p class="animal-info">골든 리트리버 / 3살</p>
-              <p class="card-description">대형견이지만 순둥순둥한 성격의 소유자. 산책과 공놀이를 아주 좋아해요!</p>
-              <p class="animal-shelter">보호센터: 천사들의집 (부산)</p>
-              <button type="button" class="btn-card-detail coming-soon-btn">입양 문의 (준비중)</button>
-            </div>
-          </div>
-          <div class="content-card adopt-card">
-            <img src="https://placehold.co/200x150/FCF3CF/5A3E2B?text=요크셔+애교" alt="작고 귀여운 요크셔테리어" />
-            <div class="card-content">
-              <p class="card-title">요미 <span class="animal-gender female">(여아♀)</span></p>
-              <p class="animal-info">요크셔테리어 / 5살 추정</p>
-              <p class="card-description">작은 체구에 애교가 가득! 조금 겁이 많지만 마음을 열면 최고의 친구가 될 거예요.</p>
-              <p class="animal-shelter">보호센터: 함께할개 (대구)</p>
-              <button type="button" class="btn-card-detail coming-soon-btn">입양 문의 (준비중)</button>
-            </div>
-          </div>
-          <div class="content-card placeholder-card">
-             <div class="card-content-placeholder">
-                <p>더 많은 천사들이 가족을 기다리고 있어요. 💖</p>
-             </div>
-          </div>
-        </div>
+    <section class="left-panel">
+      <div class="illustration">
+        <img src="../dogsHtml/mainimage.jpg" alt="따뜻한 세상을 만나는 홍시 강아지 일러스트" />
+      </div>
+      <div class="tagline">
+        <p>나의 작은 가족이<br/>따듯한 세상을 만나는 방법</p>
+        <span class="logo-text">Hongsi</span>
+      </div>
+      <form class="search-form">
+        <input type="text" placeholder="어떤 상품을 찾으시나요?" />
+        <button class="search-button">🔍</button>
+      </form>
+    </section>
+
+    <section class="main-panel">
+      <div class="main-scroll">
+        <nav class="category-nav">
+          <button class="btn-category" data-route="../page/dang-jarang.html">🐶 댕 자랑</button>
+          <button class="btn-category" data-route="../page/dang-with.html">🧡 댕과 함께</button>
+          <button class="btn-category" data-route="../page/dang-store.html">🛍️ 댕 스토어</button>
+          <button class="btn-category" data-route="../page/dang-adopt.html">🏠 가족이 되어주세요</button>
+        </nav>
+        <section class="family">
+          <h2>새로운 가족을 기다리는 천사들 💖</h2>
+          <p class="sub">따뜻한 관심과 사랑으로 아이들에게 행복을 선물해주세요.</p>
+
+          <ul class="product-list">
+            <li class="card">
+              <img src="https://placehold.co/200x150/FADBD8/5A3E2B?text=믹스견+해맑음" alt="해맑게 웃는 갈색 믹스견" />
+              <div class="info"><p class="name">사랑이 (여아♀)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/D6EAF8/5A3E2B?text=코숏+시크" alt="창밖을 바라보는 시크한 코리안숏헤어 고양이" />
+              <div class="info"><p class="name">까미 (남아♂)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/D0ECE7/5A3E2B?text=리트리버+순둥" alt="순한 눈망울의 골든 리트리버" />
+              <div class="info"><p class="name">골디 (남아♂)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/FCF3CF/5A3E2B?text=요크셔+애교" alt="작고 귀여운 요크셔테리어" />
+              <div class="info"><p class="name">요미 (여아♀)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/FADBD8/5A3E2B?text=믹스견+해맑음" alt="해맑게 웃는 갈색 믹스견" />
+              <div class="info"><p class="name">사랑이 (여아♀)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/D6EAF8/5A3E2B?text=코숏+시크" alt="창밖을 바라보는 시크한 코리안숏헤어 고양이" />
+              <div class="info"><p class="name">까미 (남아♂)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/D0ECE7/5A3E2B?text=리트리버+순둥" alt="순한 눈망울의 골든 리트리버" />
+              <div class="info"><p class="name">골디 (남아♂)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/FCF3CF/5A3E2B?text=요크셔+애교" alt="작고 귀여운 요크셔테리어" />
+              <div class="info"><p class="name">요미 (여아♀)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/FADBD8/5A3E2B?text=믹스견+해맑음" alt="해맑게 웃는 갈색 믹스견" />
+              <div class="info"><p class="name">사랑이 (여아♀)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/D6EAF8/5A3E2B?text=코숏+시크" alt="창밖을 바라보는 시크한 코리안숏헤어 고양이" />
+              <div class="info"><p class="name">까미 (남아♂)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/D0ECE7/5A3E2B?text=리트리버+순둥" alt="순한 눈망울의 골든 리트리버" />
+              <div class="info"><p class="name">골디 (남아♂)</p></div>
+            </li>
+            <li class="card">
+              <img src="https://placehold.co/200x150/FCF3CF/5A3E2B?text=요크셔+애교" alt="작고 귀여운 요크셔테리어" />
+              <div class="info"><p class="name">요미 (여아♀)</p></div>
+            </li>
+            <li class="card placeholder-card">
+              <div class="info"><p class="name">더 많은 천사들이 가족을 기다리고 있어요. 💖</p></div>
+            </li>
+          </ul>
+        </section>
 
         <div class="adoption-notice">
           <h3>입양은 신중하게 결정해주세요.</h3>
@@ -96,12 +124,18 @@
         <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
         <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
         <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
-        <button class="nav-btn" data-route="../page/login.html">👤<span>로그인</span></button>
+        <button class="nav-btn" data-route="../page/my-page.html">👤<span>내 정보</span></button>
       </nav>
     </section>
+
+    <aside class="right-panel">
+      <h2>Hongsi에 오신 것을 환영합니다!</h2>
+      <p>이곳은 당신의 작은 가족과 함께하는 따뜻한 세상을 위한 공간입니다.</p>
+      <p>오른쪽 패널은 데스크톱 환경에서 추가 정보를 표시하거나, 광고, 추천 콘텐츠 등을 보여줄 수 있습니다.</p>
+    </aside>
+
   </div>
 
-  <script src="../js/dang-adopt.js"></script>
+  <script src="../js/script.js"></script>
 </body>
-</html> 
 </html> 

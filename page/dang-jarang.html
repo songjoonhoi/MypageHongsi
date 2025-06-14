@@ -3,99 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>댕 자랑 - Hongsi</title>
+  <title>Hongsi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/dang-jarang.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <header class="site-header">
-    <button class="btn-back" onclick="history.back()">&lt;</button>
-    <h1 class="site-logo">댕 자랑</h1>
+    <h1 class="site-logo">Hongsi</h1>
     <div class="header-icons-group">
-      <a href="#" class="header-icon-btn notification-btn" title="알림">🔔</a>
-      <a href="#" class="header-icon-btn post-btn" title="글쓰기">📝</a>
-      <a href="#" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
-      <a href="/login.html" class="header-login-link">로그인/회원가입</a>
+      <a href="../page/notifications.html" class="header-icon-btn notification-btn" title="알림">🔔</a>
+      <a href="../page/write-post.html" class="header-icon-btn post-btn" title="글쓰기">📝</a>
+      <a href="../page/my-page.html" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
+      <a href="../page/login.html" class="header-login-link">로그인/회원가입</a>
     </div>
   </header>
 
-  <div class="wrapper single-page-wrapper">
-    <section class="main-panel expanded-panel">
+  <div class="wrapper">
+
+    <section class="left-panel">
+      <div class="illustration">
+        <img src="../dogsHtml/mainimage.jpg" alt="따뜻한 세상을 만나는 홍시 강아지 일러스트" />
+      </div>
+      <div class="tagline">
+        <p>나의 작은 가족이<br/>따듯한 세상을 만나는 방법</p>
+        <span class="logo-text">Hongsi</span>
+      </div>
+      <form class="search-form">
+        <input type="text" placeholder="어떤 상품을 찾으시나요?" />
+        <button class="search-button">🔍</button>
+      </form>
+    </section>
+
+    <section class="main-panel">
       <div class="main-scroll">
-        <h2>최신 댕 자랑 게시물</h2>
-        <p class="sub">우리 집 귀염둥이들을 소개합니다!</p>
-
-        <div class="dog-post-grid">
-            <div class="dog-post-card card">
-                <img src="https://placehold.co/400x300/d8a48f/ffffff?text=똘똘한+초코" alt="똘똘한 초코 사진">
-                <div class="post-content">
-                    <p class="dog-name">똘똘한 초코</p>
-                    <p class="post-text">우리 초코는 정말 똑똑해요! "앉아", "기다려"는 물론이고, 심부름까지 한답니다. 가끔은 제가 뭘 생각하는지 아는 것 같아요. 사람 같은 강아지랍니다! #초코자랑 #천재견</p>
-                </div>
-            </div>
-            <div class="dog-post-card card">
-                <img src="https://placehold.co/400x300/ffccbc/ffffff?text=애교쟁이+보리" alt="애교쟁이 보리 사진">
-                <div class="post-content">
-                    <p class="dog-name">애교쟁이 보리</p>
-                    <p class="post-text">세상 모든 사랑을 담은 눈빛, 보리의 특기입니다. 퇴근하면 문 앞에서 꼬리 빠지게 반겨주고, 배를 발라당 뒤집으며 애교를 부려요. 보리 덕분에 매일이 행복해요! #애교만점 #사랑둥이</p>
-                </div>
-            </div>
-            <div class="dog-post-card card">
-                <img src="https://placehold.co/400x300/c8e6c9/ffffff?text=호기심+대장+몽이" alt="호기심 대장 몽이 사진">
-                <div class="post-content">
-                    <p class="dog-name">호기심 대장 몽이</p>
-                    <p class="post-text">몽이는 세상 모든 것에 관심이 많아요. 산책만 나가면 풀 냄새, 바람 소리, 지나가는 사람 구경하느라 바쁘답니다. 엉뚱한 매력이 가득한 우리 몽이랍니다! #호기심천국 #귀여운악동</p>
-                </div>
-            </div>
-            <div class="dog-post-card card">
-                <img src="https://placehold.co/400x300/bbdefb/ffffff?text=꿀잠+요정+솜이" alt="꿀잠 요정 솜이 사진">
-                <div class="post-content">
-                    <p class="dog-name">꿀잠 요정 솜이</p>
-                    <p class="post-text">솜이는 잠이 제일 좋아요! 하루의 절반 이상을 곤히 잠자는데, 그 모습이 얼마나 평화로운지 몰라요. 꿀잠 자는 모습만 봐도 저절로 힐링이 됩니다. #잠만보 #힐링견</p>
-                </div>
-            </div>
-            <div class="dog-post-card card">
-                <img src="https://placehold.co/400x300/ffe0b2/ffffff?text=공놀이+선수+루피" alt="공놀이 선수 루피 사진">
-                <div class="post-content">
-                    <p class="dog-name">공놀이 선수 루피</p>
-                    <p class="post-text">루피는 공놀이에 진심이에요. 던지는 족족 물어오고, 지치지도 않는답니다. 저보다 체력이 더 좋은 것 같아요! 루피와 함께하는 공놀이는 언제나 신나요. #공중독 #에너자이저</p>
-                </div>
-            </div>
-             <div class="dog-post-card card">
-                <img src="https://placehold.co/400x300/ffccbc/ffffff?text=깜찍이+메리" alt="깜찍이 메리 사진">
-                <div class="post-content">
-                    <p class="dog-name">깜찍이 메리</p>
-                    <p class="post-text">작은 몸집에 큰 눈망울을 가진 우리 메리! 어딜 가나 시선 강탈이에요. 귀여운 외모만큼이나 애교도 많아서 온 가족의 사랑을 독차지하고 있습니다. #심쿵유발 #작은천사</p>
-                </div>
-            </div>
-             <div class="dog-post-card card">
-                <img src="https://placehold.co/400x300/c8e6c9/ffffff?text=산책왕+구름이" alt="산책왕 구름이 사진">
-                <div class="post-content">
-                    <p class="dog-name">산책왕 구름이</p>
-                    <p class="post-text">구름이는 산책이 세상에서 제일 좋아요! 목줄만 보면 흥분해서 껑충껑충 뛰고, 나가서는 한 번도 지치지 않는답니다. 덕분에 저도 매일 운동하고 있어요. #산책필수 #건강파트너</p>
-                </div>
-            </div>
-             <div class="dog-post-card card">
-                <img src="https://placehold.co/400x300/bbdefb/ffffff?text=먹방요정+크림이" alt="먹방요정 크림이 사진">
-                <div class="post-content">
-                    <p class="dog-name">먹방요정 크림이</p>
-                    <p class="post-text">크림이는 못 먹는 게 없어요. 새로운 간식만 보면 눈이 초롱초롱해지고, 먹는 모습이 어찌나 복스러운지! 크림이 먹는 모습만 봐도 배가 불러요. #잘먹는강아지 #복덩이</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="brag-generator-container">
-          <h3>✨ 나도 자랑하기!</h3>
-          <textarea id="dog-brag-input" placeholder="우리 강아지의 특징을 입력해주세요. (예: 활발하고 공놀이를 좋아해요, 귀여운 외모에 애교가 많아요)" rows="3"></textarea>
-          <button id="generate-brag-btn" class="generate-btn">✨ 자랑글 생성</button>
-          <div id="brag-output-container">
-            <div id="brag-loading-spinner" class="loading-spinner hidden"></div>
-            <p id="brag-output-text" class="generated-text"></p>
+        <nav class="category-nav">
+          <button class="btn-category" data-route="../page/dang-jarang.html">🐶 댕 자랑</button>
+          <button class="btn-category" data-route="../page/dang-with.html">🧡 댕과 함께</button>
+          <button class="btn-category" data-route="../page/dang-store.html">🛍️ 댕 스토어</button>
+          <button class="btn-category" data-route="../page/dang-adopt.html">🏠 가족이 되어주세요</button>
+        </nav>
+        <section class="product">
+          <h2>최신 댕 자랑 게시물</h2>
+          <p class="sub">우리 집 귀염둥이들을 소개합니다!</p>
+  
+          <ul class="product-list">
+              <li class="card">
+                  <img src="https://placehold.co/400x300/d8a48f/ffffff?text=똘똘한+초코" alt="똘똘한 초코 사진">
+                  <div class="info">
+                      <p class="name">똘똘한 초코</p>
+                      <p class="post-text">우리 초코는 정말 똑똑해요! "앉아", "기다려"는 물론이고, 심부름까지 한답니다. 가끔은 제가 뭘 생각하는지 아는 것 같아요. 사람 같은 강아지랍니다! #초코자랑 #천재견</p>
+                  </div>
+              </li>
+              <li class="card">
+                  <img src="https://placehold.co/400x300/ffccbc/ffffff?text=애교쟁이+보리" alt="애교쟁이 보리 사진">
+                  <div class="info">
+                      <p class="name">애교쟁이 보리</p>
+                      <p class="post-text">세상 모든 사랑을 담은 눈빛, 보리의 특기입니다. 퇴근하면 문 앞에서 꼬리 빠지게 반겨주고, 배를 발라당 뒤집으며 애교를 부려요. 보리 덕분에 매일이 행복해요! #애교만점 #사랑둥이</p>
+                  </div>
+              </li>
+              <li class="card">
+                  <img src="https://placehold.co/400x300/c8e6c9/ffffff?text=호기심+대장+몽이" alt="호기심 대장 몽이 사진">
+                  <div class="info">
+                      <p class="name">호기심 대장 몽이</p>
+                      <p class="post-text">몽이는 세상 모든 것에 관심이 많아요. 산책만 나가면 풀 냄새, 바람 소리, 지나가는 사람 구경하느라 바쁘답니다. 엉뚱한 매력이 가득한 우리 몽이랍니다! #호기심천국 #귀여운악동</p>
+                  </div>
+              </li>
+              <li class="card">
+                  <img src="https://placehold.co/400x300/bbdefb/ffffff?text=꿀잠+요정+솜이" alt="꿀잠 요정 솜이 사진">
+                  <div class="info">
+                      <p class="name">꿀잠 요정 솜이</p>
+                      <p class="post-text">솜이는 잠이 제일 좋아요! 하루의 절반 이상을 곤히 잠자는데, 그 모습이 얼마나 평화로운지 몰라요. 꿀잠 자는 모습만 봐도 저절로 힐링이 됩니다. #잠만보 #힐링견</p>
+                  </div>
+              </li>
+              <li class="card">
+                  <img src="https://placehold.co/400x300/ffe0b2/ffffff?text=공놀이+선수+루피" alt="공놀이 선수 루피 사진">
+                  <div class="info">
+                      <p class="name">공놀이 선수 루피</p>
+                      <p class="post-text">루피는 공놀이에 진심이에요. 던지는 족족 물어오고, 지치지도 않는답니다. 저보다 체력이 더 좋은 것 같아요! 루피와 함께하는 공놀이는 언제나 신나요. #공중독 #에너자이저</p>
+                  </div>
+              </li>
+               <li class="card">
+                  <img src="https://placehold.co/400x300/ffccbc/ffffff?text=깜찍이+메리" alt="깜찍이 메리 사진">
+                  <div class="info">
+                      <p class="name">깜찍이 메리</p>
+                      <p class="post-text">작은 몸집에 큰 눈망울을 가진 우리 메리! 어딜 가나 시선 강탈이에요. 귀여운 외모만큼이나 애교도 많아서 온 가족의 사랑을 독차지하고 있습니다. #심쿵유발 #작은천사</p>
+                  </div>
+              </li>
+               <li class="card">
+                  <img src="https://placehold.co/400x300/c8e6c9/ffffff?text=산책왕+구름이" alt="산책왕 구름이 사진">
+                  <div class="info">
+                      <p class="name">산책왕 구름이</p>
+                      <p class="post-text">구름이는 산책이 세상에서 제일 좋아요! 목줄만 보면 흥분해서 껑충껑충 뛰고, 나가서는 한 번도 지치지 않는답니다. 덕분에 저도 매일 운동하고 있어요. #산책필수 #건강파트너</p>
+                  </div>
+              </li>
+               <li class="card">
+                  <img src="https://placehold.co/400x300/bbdefb/ffffff?text=먹방요정+크림이" alt="먹방요정 크림이 사진">
+                  <div class="info">
+                      <p class="name">먹방요정 크림이</p>
+                      <p class="post-text">크림이는 못 먹는 게 없어요. 새로운 간식만 보면 눈이 초롱초롱해지고, 먹는 모습이 어찌나 복스러운지! 크림이 먹는 모습만 봐도 배가 불러요. #잘먹는강아지 #복덩이</p>
+                  </div>
+              </li>
+          </ul>
+  
+          <div class="brag-generator-container">
+            <h3>✨ 나도 자랑하기!</h3>
+            <textarea id="dog-brag-input" placeholder="우리 강아지의 특징을 입력해주세요. (예: 활발하고 공놀이를 좋아해요, 귀여운 외모에 애교가 많아요)" rows="2"></textarea>
+            <button id="generate-brag-btn" class="generate-btn">✨ 자랑글 생성</button>
           </div>
-        </div>
+        </section>
         </div>
 
       <nav class="bottom-nav">
@@ -103,11 +121,18 @@
         <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
         <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
         <button class="nav-btn" data-route="../page/search.html">🔍<span>검색</span></button>
-        <button class="nav-btn" data-route="../page/login.html">👤<span>로그인</span></button>
+        <button class="nav-btn" data-route="../page/my-page.html">👤<span>내 정보</span></button>
       </nav>
     </section>
+
+    <aside class="right-panel">
+      <h2>Hongsi에 오신 것을 환영합니다!</h2>
+      <p>이곳은 당신의 작은 가족과 함께하는 따뜻한 세상을 위한 공간입니다.</p>
+      <p>오른쪽 패널은 데스크톱 환경에서 추가 정보를 표시하거나, 광고, 추천 콘텐츠 등을 보여줄 수 있습니다.</p>
+    </aside>
+
   </div>
 
-  <script src="../js/dang-jarang.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>

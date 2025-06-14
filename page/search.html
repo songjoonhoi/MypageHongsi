@@ -3,43 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>검색 - Hongsi</title>
+  <title>Hongsi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/search.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <header class="site-header">
-    <button class="btn-back" onclick="history.back()">&lt;</button>
-    <h1 class="site-logo">검색</h1>
+    <h1 class="site-logo">Hongsi</h1>
+    <div class="header-icons-group">
+      <a href="../page/notifications.html" class="header-icon-btn notification-btn" title="알림">🔔</a>
+      <a href="../page/write-post.html" class="header-icon-btn post-btn" title="글쓰기">📝</a>
+      <a href="../page/my-page.html" class="header-icon-btn profile-btn" title="마이페이지">👤</a>
+      <a href="../page/login.html" class="header-login-link">로그인/회원가입</a>
+    </div>
   </header>
 
-  <div class="wrapper single-page-wrapper">
-    <section class="main-panel expanded-panel">
+  <div class="wrapper">
+
+    <section class="left-panel">
+      <div class="illustration">
+        <img src="../dogsHtml/mainimage.jpg" alt="따뜻한 세상을 만나는 홍시 강아지 일러스트" />
+      </div>
+      <div class="tagline">
+        <p>나의 작은 가족이<br/>따듯한 세상을 만나는 방법</p>
+        <span class="logo-text">Hongsi</span>
+      </div>
+      <form class="search-form">
+        <input type="text" placeholder="어떤 상품을 찾으시나요?" />
+        <button class="search-button">🔍</button>
+      </form>
+    </section>
+
+    <section class="main-panel">
       <div class="main-scroll">
-        <div class="content-container">
-          <h2>Hongsi 사이트 검색</h2>
-          <p class="sub">궁금한 내용을 검색창에 입력해보세요.</p>
-          <p class="search-tip">💡 두 단어 이상으로 검색하시면 더 정확한 결과를 얻을 수 있습니다!</p>
+        <nav class="category-nav">
+          <button class="btn-category" data-route="../page/dang-jarang.html">🐶 댕 자랑</button>
+          <button class="btn-category" data-route="../page/dang-with.html">🧡 댕과 함께</button>
+          <button class="btn-category" data-route="../page/dang-store.html">🛍️ 댕 스토어</button>
+          <button class="btn-category" data-route="../page/dang-adopt.html">🏠 가족이 되어주세요</button>
+        </nav>
+        <div class="search-page-container">
+          <div class="search-card">
+            <div class="search-card-header">
+              <span class="search-icon">🔍</span>
+              <h2>Hongsi 통합 검색</h2>
+              <p>궁금한 내용을 검색하여 따뜻한 세상을 만나보세요.</p>
+            </div>
 
-          <script async src="https://cse.google.com/cse.js?cx=d562f711b897d41e9"></script>
-          <div class="gcse-search"></div>
+            <script async src="https://cse.google.com/cse.js?cx=d562f711b897d41e9"></script>
+            <div class="gcse-search"></div>
 
-          <div class="popular-searches">
-            <h4>인기/추천 검색어</h4>
-            <div class="search-tags-container">
-              <button class="search-tag" data-search-term="강아지 산책">#강아지 산책</button>
-              <button class="search-tag" data-search-term="사료 추천">#사료 추천</button>
-              <button class="search-tag" data-search-term="배변 훈련">#배변 훈련</button>
-              <button class="search-tag" data-search-term="댕댕이 카페">#댕댕이 카페</button>
-              <button class="search-tag" data-search-term="입양 정보">#입양 정보</button>
-              <button class="search-tag" data-search-term="노견 케어">#노견 케어</button>
-              <button class="search-tag" data-search-term="강아지 장난감">#강아지 장난감</button>
+            <div class="popular-searches">
+              <h4>인기 검색어</h4>
+              <div class="search-tags-container">
+                <button class="search-tag" data-search-term="강아지 산책">#강아지 산책</button>
+                <button class="search-tag" data-search-term="사료 추천">#사료 추천</button>
+                <button class="search-tag" data-search-term="배변 훈련">#배변 훈련</button>
+                <button class="search-tag" data-search-term="댕댕이 카페">#댕댕이 카페</button>
+                <button class="search-tag" data-search-term="입양 정보">#입양 정보</button>
+                <button class="search-tag" data-search-term="노견 케어">#노견 케어</button>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -48,11 +76,18 @@
         <button class="nav-btn" data-route="../page/category.html">🗂️<span>카테고리</span></button>
         <button class="nav-btn" data-route="../page/life.html">😺<span>집사생활</span></button>
         <button class="nav-btn active" data-route="../page/search.html">🔍<span>검색</span></button>
-        <button class="nav-btn" data-route="../page/login.html">👤<span>로그인</span></button>
+        <button class="nav-btn" data-route="../page/my-page.html">👤<span>내 정보</span></button>
       </nav>
     </section>
+
+    <aside class="right-panel">
+      <h2>Hongsi에 오신 것을 환영합니다!</h2>
+      <p>이곳은 당신의 작은 가족과 함께하는 따뜻한 세상을 위한 공간입니다.</p>
+      <p>오른쪽 패널은 데스크톱 환경에서 추가 정보를 표시하거나, 광고, 추천 콘텐츠 등을 보여줄 수 있습니다.</p>
+    </aside>
+
   </div>
 
-  <script src="../js/search.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html> 
